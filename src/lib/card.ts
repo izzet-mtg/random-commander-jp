@@ -13,6 +13,7 @@ export type Card = {
   printed_text?: string;
   printed_type_line?: string;
   oracle_text: string;
+  type_line: string;
 }
 
 export const fetchCard = async (): Promise<Card> => {
