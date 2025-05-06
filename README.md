@@ -1,4 +1,4 @@
-https://github.com/izzet-mtg/random-commander-jp/actions/workflows/nextjs.yml/badge.svg
+![cd](https://github.com/izzet-mtg/random-commander-jp/actions/workflows/nextjs.yml/badge.svg)
 
 ランダムに統率者を選んできるオラクル
 
