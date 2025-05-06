@@ -3,10 +3,11 @@ import * as rarity from '@/lib/rarity';
 
 export type Card = {
   colors: color.Color[];
-  image_uris: Record<"small" | "normal" | "large" | "png" | "art_crop", string>;
+  image_uris?: Record<"small" | "normal" | "large" | "png" | "art_crop", string>;
   printed_name?: string;
   rarity: rarity.Rarity;
   game_changer: boolean;
+  name: string;
   mana_cost: string;
   related_uris: Record<"edhrec", string>;
   set_uri: string;
@@ -14,6 +15,8 @@ export type Card = {
   printed_type_line?: string;
   oracle_text: string;
   type_line: string;
+  power: string;
+  toughness: string;
 }
 
 export const fetchCard = async (): Promise<Card> => {
