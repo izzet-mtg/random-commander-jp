@@ -16,7 +16,7 @@ export type Card = {
 }
 
 export const fetchCard = async (): Promise<Card> => {
-  const response = await fetch('https://api.scryfall.com/cards/random?q=is:Acommander&q=lang:ja&lang=ja');
+  const response = await fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja');
   return await response.json();
 }
 
