@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/izzet-mtg/random-commander-jp/refs/heads/main/logos/logo.svg" width="15%" />
+</p>
+
+# Random Commander JP (RCJ)
+
 ![cd](https://github.com/izzet-mtg/random-commander-jp/actions/workflows/nextjs.yml/badge.svg)
 
 ランダムに統率者を選ぶオラクル
