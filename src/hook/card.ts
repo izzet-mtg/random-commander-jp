@@ -31,9 +31,12 @@ const fetcher = async (): Promise<Card> => {
 }
 const useCard = () => {
   const { data, error, isLoading } =  useSWRImmutable('/cards/random', fetcher);
+  if (typeof data === 'undefined') {
+    return { card: undefined, error, isLoading };
+  }
 
   return {
-    card: data,
+    card: { ...data, printed_text: data.printed_text?.split("\n"), oracle_text: data.oracle_text.split("\n") },
     error,
     isLoading,
   };
