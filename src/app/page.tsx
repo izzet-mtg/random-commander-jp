@@ -10,6 +10,12 @@ const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolea
     {children}
   </div>
 );
+const TextSectionTitle = ({ children }: PropsWithChildren) => (
+  <span className="font-bold">{children}:</span>
+);
+const TextSectionSpacer =  ({ children }: PropsWithChildren) => (
+  <span className='w-[0.5em]'></span>
+);
 
 export default function Home() {
   const { card } = useCard();
@@ -36,26 +42,30 @@ export default function Home() {
             </TextSection>
             <hr />
             <TextSection>
-              <span className="font-bold">色:</span>
-              <span className='w-[0.5em]'></span>
+              <TextSectionTitle>色</TextSectionTitle>
+              <TextSectionSpacer />
               <span className='flex justify-center items-center gap-1'>
                 {colorSymbols.map((symbol, index) => <img key={`symbol-${index}`} src={symbol} className='h-[1em]' />)}
               </span>
             </TextSection>
             <hr />
             <TextSection>
-              <span className="font-bold">マナコスト:</span>
-              <span className='w-[0.5em]'></span>
+              <TextSectionTitle>マナコスト</TextSectionTitle>
+              <TextSectionSpacer />
               <span className='flex justify-center items-center gap-1'>
                 {manaCosts.map((symbol, index) => <img key={`mana-cost-${index}`} src={symbol} className='h-[1em]' />)}
               </span>
             </TextSection>
             <hr />
             <TextSection>
+              <TextSectionTitle>カードタイプ</TextSectionTitle>
+              <TextSectionSpacer />
               <p>{card.printed_type_line || card.type_line}</p>
             </TextSection>
             <hr />
             <TextSection>
+              <TextSectionTitle>レアリティ</TextSectionTitle>
+              <TextSectionSpacer />
               {card.rarity === "rare"
                 ? "レア"
                 : card.rarity === "mythic"
@@ -72,6 +82,8 @@ export default function Home() {
             </TextSection>
             <hr />
             <TextSection>
+              <TextSectionTitle>スタッツ</TextSectionTitle>
+              <TextSectionSpacer />
               {card.power}/{card.toughness}
             </TextSection>
           </div>
