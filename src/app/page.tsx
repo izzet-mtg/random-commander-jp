@@ -1,9 +1,10 @@
 'use client';
 
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import useCard, { revalidate as revalidateCard } from '@/hook/card';
 import useSymbol from '@/hook/symbol';
 import { parseManaCost } from '@/lib/manacost';
+import ErrorDialog from '@/component/ErrorDialog';
 
 const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
   <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
@@ -18,8 +19,13 @@ const TextSectionSpacer =  () => (
 );
 
 export default function Home() {
-  const { card } = useCard();
-  const { symbols } = useSymbol();
+  const { card, error: useCardError } = useCard();
+  const { symbols, error: useSymbolError } = useSymbol();
+  const [error, setError] = useState<any>(undefined); // eslint-disable-line @typescript-eslint/no-explicit-any
+  useEffect(() => {
+    const error = useCardError || useSymbolError;
+    if (error) { setError(error) }
+  }, [useCardError, useSymbolError]);
 
   if (!(card && symbols)) return <p>Loading...</p>
 
@@ -92,6 +98,18 @@ export default function Home() {
           <button type="button" className="w-30 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => revalidateCard()}>再選択</button>
           <button type="button" className="w-30 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={() => window.open(card.related_uris.edhrec)}>EDHREC </button>
         </div>
+        {error && (
+          <ErrorDialog onClose={() => setError(undefined) }>
+            <p>以下の情報を連絡先から管理者に送信してください</p>
+            <p>(連絡先: {process.env.contactLink})</p>
+            <div className='p-4'>
+              <div className="bg-gray-100 text-gray-800 text-sm p-4 rounded-md border border-gray-300 overflow-x-auto whitespace-pre-wrap">
+                <p className='font-bold'>カード ID: {card.id}</p>
+                <p className='font-bold'>エラー内容: {error}</p>
+              </div>
+            </div>
+          </ErrorDialog>
+        )}
       </main>
       <footer className="flex flex-wrap items-center justify-center dark:bg-gray-800 bg-gray-300 p-8 gap-2">
         <div className="flex gap-4">

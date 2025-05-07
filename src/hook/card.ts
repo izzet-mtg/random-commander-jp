@@ -3,6 +3,7 @@ import { mutate } from 'swr';
 import { z } from 'zod';
 
 const Card = z.object({
+  id: z.string(),
   colors: z.array(z.union([z.literal("W"), z.literal("U"), z.literal("B"), z.literal("R"), z.literal("G")])),
   image_uris: z.object({
     normal: z.string().url(),
