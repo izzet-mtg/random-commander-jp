@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect, PropsWithChildren } from 'react';
-import { fetchCard, Card } from '@/lib/card';
+import { PropsWithChildren } from 'react';
+import useCard, { revalidate as revalidateCard } from '@/hook/card';
+import useSymbol from '@/hook/symbol';
 
 const TextSection = ({ children }: PropsWithChildren) => (
   <div className="text-center md:text-left p-2">
@@ -10,20 +11,11 @@ const TextSection = ({ children }: PropsWithChildren) => (
 );
 
 export default function Home() {
-  const [card, setCard] = useState<Card | null>(null);
-  const [isLoading, setLoading] = useState<boolean>(true);
+  const { card, error: cardFetchError } = useCard();
+  const { symbols, error: symbolFetchError } = useSymbol();
   const splitNewline = (text: string) => text.split("\n");
 
-  useEffect(() => {
-    fetchCard()
-      .then(card => {
-        setCard(card);
-        console.log(card);
-        setLoading(false);
-      });
-  }, []);
-
-  if (isLoading || !card) return <p>Loading...</p>
+  if (!(card && symbols)) return <p>Loading...</p>
 
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen">
@@ -72,7 +64,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex items-center p-8 gap-4">
-          <button type="button" className="w-30 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => window.location.reload()}>再選択</button>
+          <button type="button" className="w-30 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => revalidateCard()}>再選択</button>
           <button type="button" className="w-30 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={() => window.open(card.related_uris.edhrec)}>EDHREC </button>
         </div>
       </main>
