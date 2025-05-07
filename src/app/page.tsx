@@ -111,13 +111,21 @@ export default function Home() {
           </ErrorDialog>
         )}
       </main>
-      <footer className="flex flex-wrap items-center justify-center dark:bg-gray-800 bg-gray-300 p-8 gap-2">
+      <footer className="flex flex-col flex-wrap items-center justify-center w-full dark:bg-gray-800 bg-gray-300 p-8 gap-2">
         <div className="flex gap-4">
           <a href={process.env.NEXT_PUBLIC_CONTACT_LINK}>連絡先</a>
           <a href={process.env.NEXT_PUBLIC_FAQ_LINK}>FAQ</a>
         </div>
         <div>
-          本サイトは<a href="https://company.wizards.com/ja/legal/fancontentpolicy">ファンコテンツポリシー</a>にしたがって作成したものです。ウィザーズから何らかの許可や承認を得ているものではありません。本ページ内で使用されている素材の一部はウィザーズ・オブ・ザ・コーストの所有物です。また画像イメージやテキストは <a href="https://scryfall.com/">Scryfall</a> から取得して利用しています。
+          <p>
+            本サイトは<a href="https://company.wizards.com/ja/legal/fancontentpolicy">ファンコテンツポリシー</a>にしたがって作成したものであり、ウィザーズから何らかの許可や承認を得ているものではありません。
+          </p>
+          <p>
+            また、本ページ内で使用されている素材の一部はウィザーズ・オブ・ザ・コーストの所有物です。
+          </p>
+          <p>
+            画像イメージやテキストは <a href="https://scryfall.com/">Scryfall</a> から取得して利用しています。
+          </p>
         </div>
       </footer>
     </div >
