@@ -27,7 +27,11 @@ export default function Home() {
     if (error) { setError(error) }
   }, [useCardError, useSymbolError]);
 
-  if (!(card && symbols)) return <p>Loading...</p>
+  if (!(card && symbols)) return (
+    <div className="flex items-center justify-center min-h-screen bg-white dark:bg-gray-900">
+      <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  )
 
   const colorSymbols = card.colors.length > 0
     ? card.colors.map(color => symbols[`{${color}}`])
