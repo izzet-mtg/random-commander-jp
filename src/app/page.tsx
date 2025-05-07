@@ -13,7 +13,6 @@ const TextSection = ({ children }: PropsWithChildren) => (
 export default function Home() {
   const { card } = useCard();
   const { symbols } = useSymbol();
-  const splitNewline = (text: string) => text.split("\n");
 
   if (!(card && symbols)) return <p>Loading...</p>
 
@@ -52,7 +51,7 @@ export default function Home() {
             </TextSection>
             <hr />
             <TextSection>
-              {splitNewline(card.printed_text || card.oracle_text).map(
+              {(card.printed_text || card.oracle_text).map(
                 (line, index) => <p key={`text-line: ${index}`} className="pb-1">{line}</p>
               )}
             </TextSection>
