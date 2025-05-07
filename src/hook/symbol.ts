@@ -16,7 +16,7 @@ const fetcher = async () => {
   const response = await fetch("https://api.scryfall.com/symbology");
   const symbols = Response.parse(await response.json()).data;
 
-  let symbolMap: Record<string, string> = {};
+  const symbolMap: Record<string, string> = {};
   for (const symbol of symbols) {
     symbolMap[symbol.symbol] = symbol.svg_uri;
   }
