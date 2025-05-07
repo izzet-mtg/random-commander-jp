@@ -14,7 +14,7 @@ const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolea
 const TextSectionTitle = ({ children }: PropsWithChildren) => (
   <span className="font-bold">{children}:</span>
 );
-const TextSectionSpacer =  () => (
+const TextSectionSpacer = () => (
   <span className='w-[0.5em]'></span>
 );
 
@@ -99,7 +99,7 @@ export default function Home() {
           <button type="button" className="w-30 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={() => window.open(card.related_uris.edhrec)}>EDHREC </button>
         </div>
         {error && (
-          <ErrorDialog onClose={() => setError(undefined) }>
+          <ErrorDialog onClose={() => setError(undefined)}>
             <p>以下の情報を連絡先から管理者に送信してください</p>
             <p>(連絡先: {process.env.NEXT_PUBLIC_CONTACT_LINK})</p>
             <div className='p-4'>
