@@ -5,7 +5,7 @@ import useCard, { revalidate as revalidateCard } from '@/hook/card';
 import useSymbol from '@/hook/symbol';
 import { parseManaCost } from '@/lib/manacost';
 import ErrorDialog from '@/component/ErrorDialog';
-import Footer from '@/component/Footer';
+import Footer from '@/component/layout/Footer';
 
 const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
   <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
@@ -32,9 +32,9 @@ export default function Home() {
   }, [useCardError, useSymbolError]);
 
   if (!(card && symbols)) return (
-    <div className="flex items-center justify-center min-h-screen bg-white dark:bg-gray-900">
+    <main className="flex items-center justify-center">
       <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-    </div>
+    </main>
   );
   console.info(`user fetched card (id: ${card.id})`);
 
@@ -46,82 +46,79 @@ export default function Home() {
   console.info(`parsed card mana costs: ${rawManaCosts}`);
 
   return (
-    <div className="flex flex-col items-center justify-items-center min-h-screen">
-      <main className="flex flex-col items-center justify-center p-8 flex-grow">
-        <div className="grid md:grid-cols-2 grid-cols-1 max-w-[1280px]">
-          <div className="flex items-center justify-center">
-            <img className="block lg:h-96 h-80 m-auto row-span-1 rounded-xl" src={card.image_uris!.normal} />
-          </div>
-          <div className="max-w-128">
-            <TextSection>
-              <h1 className="text-2xl font-extrabold">{card.printed_name || card.name}</h1>
-            </TextSection>
-            <hr />
-            <TextSection>
-              <TextSectionTitle>色</TextSectionTitle>
-              <TextSectionSpacer />
-              <span className='flex justify-center items-center gap-1'>
-                {colorSymbols.map((symbol, index) => <img key={`symbol-${index}`} src={symbol} className='h-[1em]' />)}
-              </span>
-            </TextSection>
-            <hr />
-            <TextSection>
-              <TextSectionTitle>マナコスト</TextSectionTitle>
-              <TextSectionSpacer />
-              <span className='flex justify-center items-center gap-1'>
-                {manaCosts.map((symbol, index) => <img key={`mana-cost-${index}`} src={symbol} className='h-[1em]' />)}
-              </span>
-            </TextSection>
-            <hr />
-            <TextSection>
-              <TextSectionTitle>カードタイプ</TextSectionTitle>
-              <TextSectionSpacer />
-              <p>{card.printed_type_line || card.type_line}</p>
-            </TextSection>
-            <hr />
-            <TextSection>
-              <TextSectionTitle>レアリティ</TextSectionTitle>
-              <TextSectionSpacer />
-              {card.rarity === "rare"
-                ? "レア"
-                : card.rarity === "mythic"
-                  ? "神話レア"
-                  : card.rarity === "uncommon"
-                    ? "アンコモン"
-                    : "コモン"}
-            </TextSection>
-            <hr />
-            <TextSection flexCol>
-              {(card.printed_text || card.oracle_text).map(
-                (line, index) => <p key={`text-line: ${index}`} className="pb-1">{line}</p>
-              )}
-            </TextSection>
-            <hr />
-            <TextSection>
-              <TextSectionTitle>スタッツ</TextSectionTitle>
-              <TextSectionSpacer />
-              {card.power}/{card.toughness}
-            </TextSection>
-          </div>
+    <main className="flex flex-col items-center justify-center p-8">
+      <div className="grid md:grid-cols-2 grid-cols-1 max-w-[1280px]">
+        <div className="flex items-center justify-center">
+          <img className="block lg:h-96 h-80 m-auto row-span-1 rounded-xl" src={card.image_uris!.normal} />
         </div>
-        <div className="flex items-center p-8 gap-4">
-          <button type="button" className="w-30 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => revalidateCard()}>再選択</button>
-          <button type="button" className="w-30 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={() => window.open(card.related_uris.edhrec)}>EDHREC </button>
+        <div className="max-w-128">
+          <TextSection>
+            <h1 className="text-2xl font-extrabold">{card.printed_name || card.name}</h1>
+          </TextSection>
+          <hr />
+          <TextSection>
+            <TextSectionTitle>色</TextSectionTitle>
+            <TextSectionSpacer />
+            <span className='flex justify-center items-center gap-1'>
+              {colorSymbols.map((symbol, index) => <img key={`symbol-${index}`} src={symbol} className='h-[1em]' />)}
+            </span>
+          </TextSection>
+          <hr />
+          <TextSection>
+            <TextSectionTitle>マナコスト</TextSectionTitle>
+            <TextSectionSpacer />
+            <span className='flex justify-center items-center gap-1'>
+              {manaCosts.map((symbol, index) => <img key={`mana-cost-${index}`} src={symbol} className='h-[1em]' />)}
+            </span>
+          </TextSection>
+          <hr />
+          <TextSection>
+            <TextSectionTitle>カードタイプ</TextSectionTitle>
+            <TextSectionSpacer />
+            <p>{card.printed_type_line || card.type_line}</p>
+          </TextSection>
+          <hr />
+          <TextSection>
+            <TextSectionTitle>レアリティ</TextSectionTitle>
+            <TextSectionSpacer />
+            {card.rarity === "rare"
+              ? "レア"
+              : card.rarity === "mythic"
+                ? "神話レア"
+                : card.rarity === "uncommon"
+                  ? "アンコモン"
+                  : "コモン"}
+          </TextSection>
+          <hr />
+          <TextSection flexCol>
+            {(card.printed_text || card.oracle_text).map(
+              (line, index) => <p key={`text-line: ${index}`} className="pb-1">{line}</p>
+            )}
+          </TextSection>
+          <hr />
+          <TextSection>
+            <TextSectionTitle>スタッツ</TextSectionTitle>
+            <TextSectionSpacer />
+            {card.power}/{card.toughness}
+          </TextSection>
         </div>
-        {error && (
-          <ErrorDialog onClose={() => setError(undefined)}>
-            <p>以下の情報を連絡先から管理者に送信してください</p>
-            <p>(連絡先: {process.env.NEXT_PUBLIC_CONTACT_LINK})</p>
-            <div className='p-4'>
-              <div className="bg-gray-100 text-gray-800 text-sm p-4 rounded-md border border-gray-300 overflow-x-auto whitespace-pre-wrap">
-                <p className='font-bold'>カード ID: {card.id}</p>
-                <p className='font-bold'>エラー内容: {error}</p>
-              </div>
+      </div>
+      <div className="flex items-center p-8 gap-4">
+        <button type="button" className="w-30 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => revalidateCard()}>再選択</button>
+        <button type="button" className="w-30 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={() => window.open(card.related_uris.edhrec)}>EDHREC </button>
+      </div>
+      {error && (
+        <ErrorDialog onClose={() => setError(undefined)}>
+          <p>以下の情報を連絡先から管理者に送信してください</p>
+          <p>(連絡先: {process.env.NEXT_PUBLIC_CONTACT_LINK})</p>
+          <div className='p-4'>
+            <div className="bg-gray-100 text-gray-800 text-sm p-4 rounded-md border border-gray-300 overflow-x-auto whitespace-pre-wrap">
+              <p className='font-bold'>カード ID: {card.id}</p>
+              <p className='font-bold'>エラー内容: {error}</p>
             </div>
-          </ErrorDialog>
-        )}
-      </main>
-      <Footer />
-    </div >
+          </div>
+        </ErrorDialog>
+      )}
+    </main>
   );
 }
