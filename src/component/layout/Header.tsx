@@ -1,6 +1,12 @@
+import Image from "next/image";
+
 const Header = () => (
-  <header className="flex flex-col flex-wrap w-full dark:bg-gray-800 bg-gray-300 p-8 gap-2">
-    header
+  <header className="flex flex-col flex-wrap w-full dark:bg-gray-800 bg-gray-300 p-4 gap-2">
+    <div>
+      <a href="/" className="inline-block">
+        <Image src="/logo.svg" alt="ホームへ" width="32" height="32" />
+      </a>
+    </div>
   </header>
 );
 
