@@ -5,7 +5,6 @@ import useCard, { revalidate as revalidateCard } from '@/hook/card';
 import useSymbol from '@/hook/symbol';
 import { parseManaCost } from '@/lib/manacost';
 import ErrorDialog from '@/component/ErrorDialog';
-import Footer from '@/component/layout/Footer';
 
 const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
   <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
