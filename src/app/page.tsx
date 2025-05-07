@@ -13,7 +13,7 @@ const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolea
 const TextSectionTitle = ({ children }: PropsWithChildren) => (
   <span className="font-bold">{children}:</span>
 );
-const TextSectionSpacer =  ({ children }: PropsWithChildren) => (
+const TextSectionSpacer =  () => (
   <span className='w-[0.5em]'></span>
 );
 
