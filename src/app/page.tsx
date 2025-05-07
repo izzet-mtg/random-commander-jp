@@ -38,7 +38,7 @@ export default function Home() {
             <TextSection>
               <span className="font-bold">色:</span>
               <span className='w-[0.5em]'></span>
-              <span className='flex justify-center items-center'>
+              <span className='flex justify-center items-center gap-1'>
                 {colorSymbols.map((symbol, index) => <img key={`symbol-${index}`} src={symbol} className='h-[1em]' />)}
               </span>
             </TextSection>
@@ -46,7 +46,7 @@ export default function Home() {
             <TextSection>
               <span className="font-bold">マナコスト:</span>
               <span className='w-[0.5em]'></span>
-              <span className='flex justify-center items-center'>
+              <span className='flex justify-center items-center gap-1'>
                 {manaCosts.map((symbol, index) => <img key={`mana-cost-${index}`} src={symbol} className='h-[1em]' />)}
               </span>
             </TextSection>
