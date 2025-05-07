@@ -1,7 +1,5 @@
 'use client';
 
-import Footer from "@/component/Footer";
-
 export default function AboutUs() {
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen">
@@ -24,7 +22,6 @@ export default function AboutUs() {
           </p>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
