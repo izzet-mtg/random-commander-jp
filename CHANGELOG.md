@@ -6,6 +6,17 @@
 
 ## [まだリリースされていないもの]
 
+## [1.2.0]
+
+### 追加
+
+- リンクを追加
+
+### 変更
+
+- カードのスタイルを rounded に
+- ローディング画面をグルグルするように
+
 ## [1.1.0]
 
 ### 追加
@@ -25,6 +36,7 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v1.1.0...HEAD
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/izzet-mtg/random-commander-jp/releases/tag/v1.0.0
