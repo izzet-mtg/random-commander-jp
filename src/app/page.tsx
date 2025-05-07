@@ -22,7 +22,6 @@ export default function Home() {
       <main className="flex flex-col items-center justify-center p-8 flex-grow">
         <div className="grid md:grid-cols-2 grid-cols-1 max-w-[1280px]">
           <div className="flex items-center justify-center">
-            {/* TODO: カード画像がないときはプレースホルダーを表示するように実装する */}
             <img className="block lg:h-96 h-80 m-auto row-span-1" src={card.image_uris!.normal} />
           </div>
           <div className="max-w-128">
