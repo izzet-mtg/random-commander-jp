@@ -3,8 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "export",
   env: {
-    faqLink: "https://github.com/izzet-mtg/random-commander-jp/wiki",
-    contactLink: "https://github.com/izzet-mtg/random-commander-jp/issues",
+    NEXT_PUBLIC_FAQ_LINK: "https://github.com/izzet-mtg/random-commander-jp/wiki",
+    NEXT_PUBLIC_CONTACT_LINK: "https://github.com/izzet-mtg/random-commander-jp/issues",
   }
 };
 
