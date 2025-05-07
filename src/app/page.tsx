@@ -11,8 +11,8 @@ const TextSection = ({ children }: PropsWithChildren) => (
 );
 
 export default function Home() {
-  const { card, error: cardFetchError } = useCard();
-  const { symbols, error: symbolFetchError } = useSymbol();
+  const { card } = useCard();
+  const { symbols } = useSymbol();
   const splitNewline = (text: string) => text.split("\n");
 
   if (!(card && symbols)) return <p>Loading...</p>
