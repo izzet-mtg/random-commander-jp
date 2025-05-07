@@ -21,9 +21,9 @@ const TextSectionSpacer =  () => (
 export default function Home() {
   const { card, error: useCardError } = useCard();
   const { symbols, error: useSymbolError } = useSymbol();
-  const [error, setError] = useState<any>(undefined);
+  const [error, setError] = useState<any>(undefined); // eslint-disable-line @typescript-eslint/no-explicit-any
   useEffect(() => {
-    const error = useCardError || useSymbolError || "test";
+    const error = useCardError || useSymbolError;
     if (error) { setError(error) }
   }, [useCardError, useSymbolError]);
 
@@ -100,7 +100,7 @@ export default function Home() {
         </div>
         {error && (
           <ErrorDialog onClose={() => setError(undefined) }>
-            <p>エラーが発生しました。以下の情報をもとに管理者へ連絡をとってください。</p>
+            <p>以下の情報を連絡先から管理者に送信してください</p>
             <p>(連絡先: {process.env.contactLink})</p>
             <div className='p-4'>
               <div className="bg-gray-100 text-gray-800 text-sm p-4 rounded-md border border-gray-300 overflow-x-auto whitespace-pre-wrap">
