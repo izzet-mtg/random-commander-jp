@@ -125,7 +125,7 @@ export default function Home() {
           <a href={process.env.NEXT_PUBLIC_CONTACT_LINK}>連絡先</a>
           <a href={process.env.NEXT_PUBLIC_FAQ_LINK}>FAQ</a>
         </div>
-        <div>
+        <div className="flex flex-col items-center justify-center">
           <p>
             本サイトは<a href="https://company.wizards.com/ja/legal/fancontentpolicy">ファンコテンツポリシー</a>にしたがって作成したものであり、ウィザーズから何らかの許可や承認を得ているものではありません。
           </p>
