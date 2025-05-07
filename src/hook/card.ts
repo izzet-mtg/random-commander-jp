@@ -1,3 +1,5 @@
+import useSWRImmutable from 'swr/immutable';
+import { mutate } from 'swr';
 import * as color from '@/lib/color';
 import * as rarity from '@/lib/rarity';
 
@@ -19,8 +21,17 @@ export type Card = {
   toughness: string;
 }
 
-export const fetchCard = async (): Promise<Card> => {
-  const response = await fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja');
-  return await response.json();
-}
+const fetcher = async (): Promise<Card> => 
+  fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja').then(response => response.json());
+const useCard = () => {
+  const { data, error, isLoading } =  useSWRImmutable('/cards/random', fetcher);
 
+  return {
+    card: data,
+    error,
+    isLoading,
+  };
+};
+export default useCard;
+
+export const revalidate = () => mutate('/cards/random');
