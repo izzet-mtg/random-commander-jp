@@ -5,8 +5,8 @@ import useCard, { revalidate as revalidateCard } from '@/hook/card';
 import useSymbol from '@/hook/symbol';
 import { parseManaCost } from '@/lib/manacost';
 
-const TextSection = ({ children }: PropsWithChildren) => (
-  <div className="text-center md:text-left p-2 flex">
+const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
+  <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
     {children}
   </div>
 );
@@ -65,7 +65,7 @@ export default function Home() {
                     : "コモン"}
             </TextSection>
             <hr />
-            <TextSection>
+            <TextSection flexCol>
               {(card.printed_text || card.oracle_text).map(
                 (line, index) => <p key={`text-line: ${index}`} className="pb-1">{line}</p>
               )}
