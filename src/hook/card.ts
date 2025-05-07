@@ -1,28 +1,34 @@
 import useSWRImmutable from 'swr/immutable';
 import { mutate } from 'swr';
-import * as color from '@/lib/color';
-import * as rarity from '@/lib/rarity';
+import { z } from 'zod';
 
-export type Card = {
-  colors: color.Color[];
-  image_uris?: Record<"small" | "normal" | "large" | "png" | "art_crop", string>;
-  printed_name?: string;
-  rarity: rarity.Rarity;
-  game_changer: boolean;
-  name: string;
-  mana_cost: string;
-  related_uris: Record<"edhrec", string>;
-  set_uri: string;
-  printed_text?: string;
-  printed_type_line?: string;
-  oracle_text: string;
-  type_line: string;
-  power: string;
-  toughness: string;
+const Card = z.object({
+  colors: z.array(z.union([z.literal("W"), z.literal("U"), z.literal("B"), z.literal("R"), z.literal("G")])),
+  image_uris: z.object({
+    normal: z.string().url(),
+  }),
+  printed_name: z.string().optional(),
+  rarity: z.union([z.literal("rare"), z.literal("common"), z.literal("uncommon"), z.literal("mythic")]),
+  game_changer: z.boolean(),
+  name: z.string(),
+  mana_cost: z.string(),
+  related_uris: z.object({
+    edhrec: z.string().url(),
+  }),
+  set_uri: z.string(),
+  printed_text: z.string().optional(),
+  printed_type_line: z.string().optional(),
+  oracle_text: z.string(),
+  power: z.string(),
+  type_line: z.string(),
+  toughness: z.string(),
+});
+export type Card = z.infer<typeof Card>;
+
+const fetcher = async (): Promise<Card> => {
+  const response = await fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja');
+  return Card.parse(await response.json());
 }
-
-const fetcher = async (): Promise<Card> => 
-  fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja').then(response => response.json());
 const useCard = () => {
   const { data, error, isLoading } =  useSWRImmutable('/cards/random', fetcher);
 
