@@ -8,18 +8,17 @@
 
 ランダムに統率者を選ぶオラクル
 
+## 必要なもの
+
+- Node.js 18.18 以上
+- npm
+
 ## 始め方
 
 次のコマンドで開発サーバーを起動できます。
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 開発用サーバーが起動したら [http://localhost:3000](http://localhost:3000) で開くとアプリに接続できます。
