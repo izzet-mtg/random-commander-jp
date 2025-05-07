@@ -24,20 +24,25 @@ export default function Home() {
   const [error, setError] = useState<any>(undefined); // eslint-disable-line @typescript-eslint/no-explicit-any
   useEffect(() => {
     const error = useCardError || useSymbolError;
-    if (error) { setError(error) }
+    if (error) {
+      console.error(`user encountered error: ${error}`);
+      setError(error);
+    }
   }, [useCardError, useSymbolError]);
 
   if (!(card && symbols)) return (
     <div className="flex items-center justify-center min-h-screen bg-white dark:bg-gray-900">
       <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
     </div>
-  )
+  );
+  console.info(`user fetched card (id: ${card.id})`);
 
   const colorSymbols = card.colors.length > 0
     ? card.colors.map(color => symbols[`{${color}}`])
     : [symbols['{C}']];
   const rawManaCosts = parseManaCost(card.mana_cost);
   const manaCosts = rawManaCosts.map(manaCost => symbols[manaCost]);
+  console.info(`parsed card mana costs: ${rawManaCosts}`);
 
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen">
