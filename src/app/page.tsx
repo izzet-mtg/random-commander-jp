@@ -3,9 +3,10 @@
 import { PropsWithChildren } from 'react';
 import useCard, { revalidate as revalidateCard } from '@/hook/card';
 import useSymbol from '@/hook/symbol';
+import { parseManaCost } from '@/lib/manacost';
 
 const TextSection = ({ children }: PropsWithChildren) => (
-  <div className="text-center md:text-left p-2">
+  <div className="text-center md:text-left p-2 flex">
     {children}
   </div>
 );
@@ -15,6 +16,12 @@ export default function Home() {
   const { symbols } = useSymbol();
 
   if (!(card && symbols)) return <p>Loading...</p>
+
+  const colorSymbols = card.colors.length > 0
+    ? card.colors.map(color => symbols[`{${color}}`])
+    : [symbols['{C}']];
+  const rawManaCosts = parseManaCost(card.mana_cost);
+  const manaCosts = rawManaCosts.map(manaCost => symbols[manaCost]);
 
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen">
@@ -29,11 +36,19 @@ export default function Home() {
             </TextSection>
             <hr />
             <TextSection>
-              <span className="font-bold">色:</span> {card.colors.join()}
+              <span className="font-bold">色:</span>
+              <span className='w-[0.5em]'></span>
+              <span className='flex justify-center items-center'>
+                {colorSymbols.map((symbol, index) => <img key={`symbol-${index}`} src={symbol} className='h-[1em]' />)}
+              </span>
             </TextSection>
             <hr />
             <TextSection>
-              <span className="font-bold">マナコスト:</span> {card.mana_cost}
+              <span className="font-bold">マナコスト:</span>
+              <span className='w-[0.5em]'></span>
+              <span className='flex justify-center items-center'>
+                {manaCosts.map((symbol, index) => <img key={`mana-cost-${index}`} src={symbol} className='h-[1em]' />)}
+              </span>
             </TextSection>
             <hr />
             <TextSection>
