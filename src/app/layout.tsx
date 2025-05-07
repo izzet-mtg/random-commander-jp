@@ -26,7 +26,9 @@ export default function RootLayout({
       >
         <div className="flex flex-col items-center justify-items-center min-h-screen">
           <Header />
-          {children}
+          <div className="flex-grow flex items-center justify-center w-full">
+            {children}
+          </div>
           <Footer />
         </div>
       </body>

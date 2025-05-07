@@ -2,7 +2,7 @@
 
 export default function AboutUs() {
   return (
-    <main className="flex flex-col items-center justify-center p-8 flex-grow max-w-3xl">
+    <main className="max-w-3xl">
       <div>
         <h1 className="text-2xl font-extrabold pb-4">私達について</h1>
         <p>

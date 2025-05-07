@@ -32,9 +32,9 @@ export default function Home() {
   }, [useCardError, useSymbolError]);
 
   if (!(card && symbols)) return (
-    <div className="flex items-center justify-center min-h-screen bg-white dark:bg-gray-900">
+    <main className="flex items-center justify-center">
       <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-    </div>
+    </main>
   );
   console.info(`user fetched card (id: ${card.id})`);
 
@@ -46,7 +46,7 @@ export default function Home() {
   console.info(`parsed card mana costs: ${rawManaCosts}`);
 
   return (
-    <main className="flex flex-col items-center justify-center p-8 flex-grow">
+    <main className="flex flex-col items-center justify-center p-8">
       <div className="grid md:grid-cols-2 grid-cols-1 max-w-[1280px]">
         <div className="flex items-center justify-center">
           <img className="block lg:h-96 h-80 m-auto row-span-1 rounded-xl" src={card.image_uris!.normal} />
