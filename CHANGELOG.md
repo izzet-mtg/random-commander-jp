@@ -6,6 +6,8 @@
 
 ## [まだリリースされていないもの]
 
+## [1.1.0]
+
 ### 追加
 
 - FAQ のリンクを追加
@@ -23,5 +25,6 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/izzet-mtg/random-commander-jp/releases/tag/v0.0.1
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/izzet-mtg/random-commander-jp/releases/tag/v1.0.0
