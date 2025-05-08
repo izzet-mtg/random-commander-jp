@@ -45,8 +45,6 @@ export default function Home() {
   console.info(`parsed card mana costs: ${rawManaCosts}`);
   const cardText = (card.printed_text || card.oracle_text || []).map(line => parseCardText(line));
 
-  console.log(cardText);
-
   return (
     <main className="flex flex-col items-center justify-center p-8">
       <div className="grid md:grid-cols-2 grid-cols-1 max-w-[1280px]">
