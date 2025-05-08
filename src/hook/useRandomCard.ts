@@ -40,7 +40,7 @@ const fetcher = async (): Promise<{ success: true, card: Card } | { success: fal
   }
   return { success: true, card: card.data };
 }
-const useCard = () => {
+const useRandomCard = () => {
   const { data: response, error, isLoading } =  useSWRImmutable('/cards/random', fetcher);
   if (typeof response === 'undefined') {
     return { card: undefined, error, isLoading: false };
@@ -56,6 +56,6 @@ const useCard = () => {
     isLoading,
   };
 };
-export default useCard;
+export default useRandomCard;
 
 export const revalidate = () => mutate('/cards/random');
