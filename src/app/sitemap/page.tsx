@@ -40,10 +40,10 @@ export default function Sitemap() {
         </Card>
         <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/`}>
           <CardTitle>
-            ランダム統率者表示
+            ホーム
           </CardTitle>
           <CardContents>
-            ランダムに統率者を表示します
+            ランダムに統率者を表示
           </CardContents>
         </Card>
         <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/`}>
