@@ -55,6 +55,17 @@ export default function Home() {
           </TextSection>
           <hr />
           <TextSection>
+            <TextSectionTitle>カードセット</TextSectionTitle>
+            <TextSectionSpacer />
+            {card.set_name && (
+              <span className='flex justify-center items-center gap-1'>
+                {card.set_name}
+              </span>
+            )}
+            {!card.set_name && <p className="font-bold">!カードセット未登録です</p>}
+          </TextSection>
+          <hr />
+          <TextSection>
             <TextSectionTitle>固有色</TextSectionTitle>
             <TextSectionSpacer />
             <span className='flex justify-center items-center gap-1'>
@@ -68,6 +79,7 @@ export default function Home() {
             {manaCosts && (
               <span className='flex justify-center items-center gap-1'>
                 {manaCosts.map((symbol, index) => <img key={`mana-cost-${index}`} src={symbol} className='h-[1em]' />)}
+                (総量: {card.cmc})
               </span>
             )}
             {!manaCosts && <p className="font-bold">!マナコスト未登録です</p>}
@@ -104,6 +116,13 @@ export default function Home() {
             <TextSection>
               <TextSectionTitle>スタッツ</TextSectionTitle>
                 {card.power}/{card.toughness}
+              <TextSectionSpacer />
+            </TextSection>
+          )}
+          {card.loyalty && (
+            <TextSection>
+              <TextSectionTitle>忠誠度</TextSectionTitle>
+                {card.loyalty}
               <TextSectionSpacer />
             </TextSection>
           )}

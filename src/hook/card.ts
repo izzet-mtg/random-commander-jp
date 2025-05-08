@@ -16,6 +16,7 @@ const Card = z.object({
   related_uris: z.object({
     edhrec: z.string().url(),
   }),
+  cmc: z.number(),
   set_uri: z.string(),
   printed_text: z.string().optional(),
   printed_type_line: z.string().optional(),
@@ -23,6 +24,8 @@ const Card = z.object({
   power: z.string().optional(),
   type_line: z.string(),
   toughness: z.string().optional(),
+  loyalty: z.string().optional(),
+  set_name: z.string().optional(),
 });
 export type Card = z.infer<typeof Card>;
 
