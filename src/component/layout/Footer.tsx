@@ -5,6 +5,7 @@ const Footer = () => (
       <a href={`${process.env.NEXT_PUBLIC_BASE_PATH}/faq`}>FAQ</a>
       <a href={`${process.env.NEXT_PUBLIC_BASE_PATH}/about-us`}>私達について</a>
       <a href={`${process.env.NEXT_PUBLIC_BASE_PATH}/privacy-policy`}>プライバシーポリシー</a>
+      <a href={`${process.env.NEXT_PUBLIC_BASE_PATH}/sitemap`}>サイトマップ</a>
     </div>
     <div className="flex flex-col items-center justify-center">
       <p>
