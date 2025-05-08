@@ -1,3 +1,6 @@
+// Copyright (c) 2025 izzet-mtg
+// SPDX-License-Identifier: MIT
+
 import useSWRImmutable from 'swr/immutable';
 import { mutate } from 'swr';
 import { z } from 'zod';

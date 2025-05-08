@@ -1,3 +1,6 @@
+// Copyright (c) 2025 izzet-mtg
+// SPDX-License-Identifier: MIT
+
 const Header = () =>  (
   <header className="flex flex-col flex-wrap w-full dark:bg-gray-800 bg-gray-600 p-4 gap-2">
     <div>

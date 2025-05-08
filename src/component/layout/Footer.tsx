@@ -1,3 +1,6 @@
+// Copyright (c) 2025 izzet-mtg
+// SPDX-License-Identifier: MIT
+
 const Footer = () => (
   <footer className="flex flex-col flex-wrap items-center justify-center w-full dark:bg-gray-800 bg-gray-300 p-8 gap-2">
     <div className="flex gap-4 md:flex-row flex-col">

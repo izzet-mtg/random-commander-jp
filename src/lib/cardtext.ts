@@ -1,3 +1,6 @@
+// Copyright (c) 2025 izzet-mtg
+// SPDX-License-Identifier: MIT
+
 export type CardSymbol = { symbol: string }
 /**
  * テキストの要素(文章 or シンボル)

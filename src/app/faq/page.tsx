@@ -1,5 +1,8 @@
 'use client';
 
+// Copyright (c) 2025 izzet-mtg
+// SPDX-License-Identifier: MIT
+
 import { PropsWithChildren } from "react";
 
 const Question = ({ children }: PropsWithChildren) => (

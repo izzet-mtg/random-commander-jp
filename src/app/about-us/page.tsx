@@ -1,5 +1,8 @@
 'use client';
 
+// Copyright (c) 2025 izzet-mtg
+// SPDX-License-Identifier: MIT
+
 export default function AboutUs() {
   return (
     <main className="max-w-3xl">

@@ -1,3 +1,6 @@
+// Copyright (c) 2025 izzet-mtg
+// SPDX-License-Identifier: MIT
+
 /**
  * カードのマナコストをパースする。
  * Scryfall だとマナコストが "{W}{U}{B}{R}{G}" のように文字列としてくるので、これを配列にバラす。

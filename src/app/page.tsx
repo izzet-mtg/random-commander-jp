@@ -1,5 +1,8 @@
 'use client';
 
+// Copyright (c) 2025 izzet-mtg
+// SPDX-License-Identifier: MIT
+
 import { PropsWithChildren, useState } from 'react';
 import useRandomCard, { revalidate as revalidateCard } from '@/hook/useRandomCard';
 import useSymbol from '@/hook/useSymbol';
