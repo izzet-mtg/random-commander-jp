@@ -2,7 +2,7 @@
 
 import { PropsWithChildren, useState } from 'react';
 import useRandomCard, { revalidate as revalidateCard } from '@/hook/useRandomCard';
-import useSymbol from '@/hook/symbol';
+import useSymbol from '@/hook/useSymbol';
 import { parseManaCost } from '@/lib/manacost';
 import ErrorDialog from '@/component/ErrorDialog';
 
