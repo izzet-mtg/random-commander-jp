@@ -115,15 +115,15 @@ export default function Home() {
           {card.power && card.toughness && (
             <TextSection>
               <TextSectionTitle>スタッツ</TextSectionTitle>
-                {card.power}/{card.toughness}
               <TextSectionSpacer />
+              {card.power}/{card.toughness}
             </TextSection>
           )}
           {card.loyalty && (
             <TextSection>
               <TextSectionTitle>忠誠度</TextSectionTitle>
-                {card.loyalty}
               <TextSectionSpacer />
+              {card.loyalty}
             </TextSection>
           )}
         </div>
