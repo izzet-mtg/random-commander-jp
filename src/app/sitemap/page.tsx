@@ -38,7 +38,7 @@ export default function Sitemap() {
             質問と回答を掲載
           </CardContents>
         </Card>
-        <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/`}>
+        <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/privacy-policy`}>
           <CardTitle>
             ホーム
           </CardTitle>
