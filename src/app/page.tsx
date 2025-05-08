@@ -5,6 +5,7 @@ import useRandomCard, { revalidate as revalidateCard } from '@/hook/useRandomCar
 import useSymbol from '@/hook/useSymbol';
 import { parseManaCost } from '@/lib/manacost';
 import ErrorDialog from '@/component/ErrorDialog';
+import { parseCardText } from '@/lib/cardtext';
 
 const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
   <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
@@ -39,7 +40,9 @@ export default function Home() {
   const rawManaCosts = card.mana_cost ? parseManaCost(card.mana_cost) : undefined;
   const manaCosts = rawManaCosts?.map(manaCost => symbols[manaCost]);
   console.info(`parsed card mana costs: ${rawManaCosts}`);
-  const cardText = card.printed_text || card.oracle_text || [];
+  const cardText = (card.printed_text || card.oracle_text || []).map(line => parseCardText(line));
+
+  console.log(cardText);
 
   return (
     <main className="flex flex-col items-center justify-center p-8">
@@ -107,7 +110,14 @@ export default function Home() {
           <hr />
           <TextSection flexCol>
             {cardText.length > 0 && cardText.map(
-              (line, index) => <p key={`text-line: ${index}`} className="pb-1">{line}</p>
+              (line, lineIndex) => (
+                <p key={`text-line: ${lineIndex}`} className="pb-1">
+                  {line.map((component, componentIndex) => typeof component === "string"
+                    ? <span key={`text-line: ${lineIndex}, component-index: ${componentIndex}`}>{component}</span>
+                    : <img key={`text-line: ${lineIndex}, component-index: ${componentIndex}`} src={symbols[component.symbol]} className='h-[1em] inline' />
+                  )}
+                </p>
+              )
             )}
             {cardText.length === 0 && <p className="font-bold">!カードテキストがありません</p>}
           </TextSection>
