@@ -5,7 +5,7 @@ const nextConfig = {
   output: "export",
   env: {
     NEXT_PUBLIC_FAQ_LINK: "https://github.com/izzet-mtg/random-commander-jp/wiki",
-    NEXT_PUBLIC_CONTACT_LINK: "https://github.com/izzet-mtg/random-commander-jp/issues/new/choose",
+    NEXT_PUBLIC_CONTACT_LINK: "https://forms.gle/FNLZMrzAnxNehuaP6",
     NEXT_PUBLIC_BASE_PATH: basePath,
   },
   assetPrefix: basePath,
