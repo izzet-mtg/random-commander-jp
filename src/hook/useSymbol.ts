@@ -1,6 +1,8 @@
 import useSWRImmutable from 'swr/immutable';
 import { z } from 'zod';
 
+// スキーマは Scryfall の Colors and Costs ページを参考
+// https://scryfall.com/docs/api/colors
 const Symbol = z.object({
   symbol: z.string(),
   svg_uri: z.string(),
@@ -22,6 +24,14 @@ const fetcher = async () => {
   }
   return symbolMap;
 }
+/**
+ * カードに顕れるシンボルの情報を全て取得する。
+ * 詳しくは Scryfall の /symbology GET API を参考 のこと。
+ * https://scryfall.com/docs/api/card-symbols/all
+ * @example
+ * const { symbols, error, isLoading } = useSymbol();
+ * @returns ランダムに取得した統率者カード情報
+ */
 const useSymbol = () => {
   const { data, error, isLoading } = useSWRImmutable('/symbology', fetcher);
 

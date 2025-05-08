@@ -2,6 +2,8 @@ import useSWRImmutable from 'swr/immutable';
 import { mutate } from 'swr';
 import { z } from 'zod';
 
+// スキーマは Scryfall の /cards/random GET API を参考
+// https://scryfall.com/docs/api/cards/random
 const Card = z.object({
   id: z.string(),
   color_identity: z.array(z.union([z.literal("W"), z.literal("U"), z.literal("B"), z.literal("R"), z.literal("G")])),
@@ -40,6 +42,14 @@ const fetcher = async (): Promise<{ success: true, card: Card } | { success: fal
   }
   return { success: true, card: card.data };
 }
+/**
+ * 統率者カードの情報をランダムに取得する。
+ * 詳しくは Scryfall の /cards/random GET API を参考 のこと。
+ * https://scryfall.com/docs/api/cards/random
+ * @example
+ * const { card, error, isLoading } = useRandomCard();
+ * @returns ランダムに取得した統率者カード情報
+ */
 const useRandomCard = () => {
   const { data: response, error, isLoading } =  useSWRImmutable('/cards/random', fetcher);
   if (typeof response === 'undefined') {
