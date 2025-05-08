@@ -21,14 +21,10 @@ const TextSectionSpacer = () => (
 export default function Home() {
   const { card, error: useCardError } = useCard();
   const { symbols, error: useSymbolError } = useSymbol();
-  const [error, setError] = useState<any>(undefined); // eslint-disable-line @typescript-eslint/no-explicit-any
-  useEffect(() => {
-    const error = useCardError || useSymbolError;
-    if (error) {
-      console.error(`user encountered error: ${error}`);
-      setError(error);
-    }
-  }, [useCardError, useSymbolError]);
+  const [error, setError] = useState<Error | undefined>(useCardError || useSymbolError);
+  if (error) {
+    console.error(`user encountered error: ${error}`);
+  }
 
   if (!(card && symbols)) return (
     <main className="flex items-center justify-center">
@@ -37,18 +33,21 @@ export default function Home() {
   );
   console.info(`user fetched card (name: ${card.name}, id: ${card.id})`);
 
-  const colorSymbols = card.colors.length > 0
-    ? card.colors.map(color => symbols[`{${color}}`])
+  const colorSymbols = card.color_identity.length > 0
+    ? card.color_identity.map(color => symbols[`{${color}}`])
     : [symbols['{C}']];
-  const rawManaCosts = parseManaCost(card.mana_cost);
-  const manaCosts = rawManaCosts.map(manaCost => symbols[manaCost]);
+  const rawManaCosts = card.mana_cost ? parseManaCost(card.mana_cost) : undefined;
+  const manaCosts = rawManaCosts?.map(manaCost => symbols[manaCost]);
   console.info(`parsed card mana costs: ${rawManaCosts}`);
+  const cardText = card.printed_text || card.oracle_text || [];
 
   return (
     <main className="flex flex-col items-center justify-center p-8">
       <div className="grid md:grid-cols-2 grid-cols-1 max-w-[1280px]">
         <div className="flex items-center justify-center">
-          <img className="block lg:h-96 h-80 m-auto row-span-1 rounded-xl" src={card.image_uris!.normal} />
+          {card.image_uris && (
+            <img className="block lg:h-96 h-80 m-auto row-span-1 rounded-xl" src={card.image_uris!.normal} />
+          )}
         </div>
         <div className="max-w-128">
           <TextSection>
@@ -56,7 +55,7 @@ export default function Home() {
           </TextSection>
           <hr />
           <TextSection>
-            <TextSectionTitle>色</TextSectionTitle>
+            <TextSectionTitle>固有色</TextSectionTitle>
             <TextSectionSpacer />
             <span className='flex justify-center items-center gap-1'>
               {colorSymbols.map((symbol, index) => <img key={`symbol-${index}`} src={symbol} className='h-[1em]' />)}
@@ -66,9 +65,12 @@ export default function Home() {
           <TextSection>
             <TextSectionTitle>マナコスト</TextSectionTitle>
             <TextSectionSpacer />
-            <span className='flex justify-center items-center gap-1'>
-              {manaCosts.map((symbol, index) => <img key={`mana-cost-${index}`} src={symbol} className='h-[1em]' />)}
-            </span>
+            {manaCosts && (
+              <span className='flex justify-center items-center gap-1'>
+                {manaCosts.map((symbol, index) => <img key={`mana-cost-${index}`} src={symbol} className='h-[1em]' />)}
+              </span>
+            )}
+            {!manaCosts && <p className="font-bold">Scryfall でマナコストが未登録のようです。</p>}
           </TextSection>
           <hr />
           <TextSection>
@@ -86,20 +88,25 @@ export default function Home() {
                 ? "神話レア"
                 : card.rarity === "uncommon"
                   ? "アンコモン"
-                  : "コモン"}
+                  : card.rarity === "special"
+                    ? "スペシャル"
+                    : "コモン"}
           </TextSection>
           <hr />
           <TextSection flexCol>
-            {(card.printed_text || card.oracle_text).map(
+            {cardText.length > 0 && cardText.map(
               (line, index) => <p key={`text-line: ${index}`} className="pb-1">{line}</p>
             )}
+            {cardText.length === 0 && <p className="font-bold">!NONE</p>}
           </TextSection>
           <hr />
-          <TextSection>
-            <TextSectionTitle>スタッツ</TextSectionTitle>
-            <TextSectionSpacer />
-            {card.power}/{card.toughness}
-          </TextSection>
+          {card.power && card.toughness && (
+            <TextSection>
+              <TextSectionTitle>スタッツ</TextSectionTitle>
+                {card.power}/{card.toughness}
+              <TextSectionSpacer />
+            </TextSection>
+          )}
         </div>
       </div>
       <div className="flex items-center p-8 gap-4">
@@ -114,7 +121,7 @@ export default function Home() {
             <div className="bg-gray-100 text-gray-800 text-sm p-4 rounded-md border border-gray-300 overflow-x-auto whitespace-pre-wrap">
               <p className='font-bold'>カード ID: {card.id}</p>
               <p className='font-bold'>カード名前: {card.name}</p>
-              <p className='font-bold'>エラー内容: {error}</p>
+              <p className='font-bold'>エラー内容: {`${error}`}</p>
             </div>
           </div>
         </ErrorDialog>
