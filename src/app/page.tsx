@@ -1,7 +1,7 @@
 'use client';
 
 import { PropsWithChildren, useState } from 'react';
-import useCard, { revalidate as revalidateCard } from '@/hook/card';
+import useRandomCard, { revalidate as revalidateCard } from '@/hook/useRandomCard';
 import useSymbol from '@/hook/symbol';
 import { parseManaCost } from '@/lib/manacost';
 import ErrorDialog from '@/component/ErrorDialog';
@@ -19,7 +19,7 @@ const TextSectionSpacer = () => (
 );
 
 export default function Home() {
-  const { card, error: useCardError } = useCard();
+  const { card, error: useCardError } = useRandomCard();
   const { symbols, error: useSymbolError } = useSymbol();
   const [error, setError] = useState<Error | undefined>(useCardError || useSymbolError);
   if (error) {
