@@ -1,6 +1,6 @@
 'use client';
 
-import { PropsWithChildren, useEffect, useState } from 'react';
+import { PropsWithChildren, useState } from 'react';
 import useCard, { revalidate as revalidateCard } from '@/hook/card';
 import useSymbol from '@/hook/symbol';
 import { parseManaCost } from '@/lib/manacost';
