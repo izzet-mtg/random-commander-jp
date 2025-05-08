@@ -35,7 +35,7 @@ export default function Home() {
       <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
     </main>
   );
-  console.info(`user fetched card (id: ${card.id})`);
+  console.info(`user fetched card (name: ${card.name}, id: ${card.id})`);
 
   const colorSymbols = card.colors.length > 0
     ? card.colors.map(color => symbols[`{${color}}`])
@@ -113,6 +113,7 @@ export default function Home() {
           <div className='p-4'>
             <div className="bg-gray-100 text-gray-800 text-sm p-4 rounded-md border border-gray-300 overflow-x-auto whitespace-pre-wrap">
               <p className='font-bold'>カード ID: {card.id}</p>
+              <p className='font-bold'>カード名前: {card.name}</p>
               <p className='font-bold'>エラー内容: {error}</p>
             </div>
           </div>
