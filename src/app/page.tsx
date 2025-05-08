@@ -70,7 +70,7 @@ export default function Home() {
                 {manaCosts.map((symbol, index) => <img key={`mana-cost-${index}`} src={symbol} className='h-[1em]' />)}
               </span>
             )}
-            {!manaCosts && <p className="font-bold">Scryfall でマナコストが未登録のようです。</p>}
+            {!manaCosts && <p className="font-bold">!マナコスト未登録です</p>}
           </TextSection>
           <hr />
           <TextSection>
@@ -97,7 +97,7 @@ export default function Home() {
             {cardText.length > 0 && cardText.map(
               (line, index) => <p key={`text-line: ${index}`} className="pb-1">{line}</p>
             )}
-            {cardText.length === 0 && <p className="font-bold">!NONE</p>}
+            {cardText.length === 0 && <p className="font-bold">!カードテキストがありません</p>}
           </TextSection>
           <hr />
           {card.power && card.toughness && (
