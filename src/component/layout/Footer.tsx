@@ -3,7 +3,7 @@ const Footer = () => (
     <div className="flex gap-4">
       <a href={process.env.NEXT_PUBLIC_CONTACT_LINK}>連絡先</a>
       <a href={process.env.NEXT_PUBLIC_FAQ_LINK}>FAQ</a>
-      <a href={`${process.env.NEXT_PUBLIC_BASE_PATH}/about-us`}>About Us</a>
+      <a href={`${process.env.NEXT_PUBLIC_BASE_PATH}/about-us`}>私達について</a>
     </div>
     <div className="flex flex-col items-center justify-center">
       <p>
