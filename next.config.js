@@ -4,9 +4,9 @@ const basePath = process.env.NODE_ENV === "production" ? "/random-commander-jp" 
 const nextConfig = {
   output: "export",
   env: {
-    NEXT_PUBLIC_FAQ_LINK: "https://github.com/izzet-mtg/random-commander-jp/wiki",
     NEXT_PUBLIC_CONTACT_LINK: "https://forms.gle/FNLZMrzAnxNehuaP6",
     NEXT_PUBLIC_BASE_PATH: basePath,
+    NEXT_PUBLIC_GITHUB_REPOSITORY_URL: "https://github.com/izzet-mtg/random-commander-jp/",
   },
   assetPrefix: basePath,
   basePath: basePath,
