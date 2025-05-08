@@ -6,6 +6,12 @@
 
 ## [まだリリースされていないもの]
 
+## [2.0.1] - 2025-05-08
+
+### 変更
+
+- CHANGELOG.md の変更内容が一部フォーマットがただしくなかった
+
 ## [2.0.0] - 2025-05-08
 
 ### 追加
@@ -52,7 +58,8 @@
 ファーストリリース
 
 [まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v2.0.0...HEAD
-[2.0.0]: : https://github.com/izzet-mtg/random-commander-jp/compare/v1.2.0...v2.0.0
+[2.0.1]:https://github.com/izzet-mtg/random-commander-jp/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v1.2.0...v2.0.0
 [1.2.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/izzet-mtg/random-commander-jp/releases/tag/v1.0.0
