@@ -46,6 +46,14 @@ export default function Sitemap() {
             ランダムに統率者を表示します
           </CardContents>
         </Card>
+        <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/`}>
+          <CardTitle>
+            プライバシーポリシー
+          </CardTitle>
+          <CardContents>
+            プライバシーポリシーを表示
+          </CardContents>
+        </Card>
       </div>
     </main>
   );
