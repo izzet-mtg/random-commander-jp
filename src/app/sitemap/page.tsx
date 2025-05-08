@@ -38,7 +38,7 @@ export default function Sitemap() {
             質問と回答を掲載
           </CardContents>
         </Card>
-        <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/privacy-policy`}>
+        <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/`}>
           <CardTitle>
             ホーム
           </CardTitle>
@@ -46,7 +46,7 @@ export default function Sitemap() {
             ランダムに統率者を表示
           </CardContents>
         </Card>
-        <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/`}>
+        <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/privacy-policy`}>
           <CardTitle>
             プライバシーポリシー
           </CardTitle>
