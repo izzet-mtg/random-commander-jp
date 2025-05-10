@@ -9,6 +9,7 @@ import useSymbol from '@/hook/useSymbol';
 import { parseManaCost } from '@/lib/manacost';
 import ErrorDialog from '@/component/ErrorDialog';
 import { parseCardText } from '@/lib/cardtext';
+import CardSet from '@/component/card/Set';
 
 const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
   <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
@@ -58,16 +59,9 @@ export default function Home() {
             <h1 className="text-2xl font-extrabold">{card.printed_name || card.name}</h1>
           </TextSection>
           <hr />
-          <TextSection>
-            <TextSectionTitle>カードセット</TextSectionTitle>
-            <TextSectionSpacer />
-            {card.set_name && (
-              <span className='flex justify-center items-center gap-1'>
-                {card.set_name}
-              </span>
-            )}
-            {!card.set_name && <p className="font-bold">!カードセット未登録です</p>}
-          </TextSection>
+          <CardSet>
+            {card.set_name ?? <p className="font-bold">!カードセット未登録です</p>}
+          </CardSet>
           <hr />
           <TextSection>
             <TextSectionTitle>固有色</TextSectionTitle>
