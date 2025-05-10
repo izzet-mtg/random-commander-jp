@@ -22,12 +22,6 @@ const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolea
     {children}
   </div>
 );
-const TextSectionTitle = ({ children }: PropsWithChildren) => (
-  <span className="font-bold">{children}:</span>
-);
-const TextSectionSpacer = () => (
-  <span className='w-[0.5em]'></span>
-);
 
 export default function Home() {
   const { card, error: useCardError } = useRandomCard();
