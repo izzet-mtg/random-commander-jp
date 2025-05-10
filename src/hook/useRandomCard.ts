@@ -19,7 +19,7 @@ const CardFace = z.object({
   image_uris: z.object({
     normal: z.string().url(),
   }).optional(),
-  colors: z.array(CardColor),
+  colors: z.array(CardColor).optional(),
   power: z.string().optional(),
   toughness: z.string().optional(),
   loyalty: z.string().optional(),
@@ -63,6 +63,14 @@ const DualFaceCard = CardCommon.extend({
   layout: z.union([z.literal("transform"), z.literal("modal_dfc")]),
 });
 export type DualFaceCard = z.infer<typeof DualFaceCard>;
+const AdventureCard = CardCommon.extend({
+  card_faces: z.tuple([CardFace, CardFace]),
+  image_uris: z.object({
+    normal: z.string().url(),
+  }).optional(),
+  layout: z.literal("adventure"),
+});
+export type AdventureCard = z.infer<typeof AdventureCard>;
 // TODO: 以下は後で対応
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const MeldCard = CardCommon.extend({
@@ -76,11 +84,12 @@ const SplitCard = CardCommon.extend({
 const FlipCard = CardCommon.extend({
   layout: z.literal("flip"),
 });
-const Card = z.union([NormalCard, DualFaceCard]);
+const Card = z.union([NormalCard, DualFaceCard, AdventureCard]);
 export type Card = z.infer<typeof Card>;
 
 const fetcher = async (): Promise<{ success: true, card: Card } | { success: false, error: Error }> => {
-  const response = await fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja');
+  const response = await fetch('https://api.scryfall.com/cards/5d3334e5-b94a-4e0d-a782-47e400a1c51b');
+  // const response = await fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja');
   const body = await response.json();
   const card = Card.safeParse(body);
   if (!card.success) {
