@@ -18,6 +18,7 @@ import Stats from '@/component/card/Stats';
 import Loyalty from '@/component/card/Loyalty';
 import Name from '@/component/card/Name';
 import Section from '@/component/card/internal/Section';
+import CardImage from '@/component/card/Image';
 
 export default function Home() {
   const { card, error: useCardError } = useRandomCard();
@@ -45,11 +46,11 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center p-8">
       <div className="grid md:grid-cols-2 grid-cols-1 max-w-[1280px]">
-        <div className="flex items-center justify-center">
-          {card.image_uris && (
+        {card.image_uris && (
+          <CardImage>
             <img className="block lg:h-96 h-80 m-auto row-span-1 rounded-xl" src={card.image_uris!.normal} />
-          )}
-        </div>
+          </CardImage>
+        )}
         <div className="max-w-128">
           <Name>
             {card.printed_name || card.name}
