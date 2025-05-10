@@ -88,8 +88,7 @@ const Card = z.union([NormalCard, DualFaceCard, AdventureCard]);
 export type Card = z.infer<typeof Card>;
 
 const fetcher = async (): Promise<{ success: true, card: Card } | { success: false, error: Error }> => {
-  const response = await fetch('https://api.scryfall.com/cards/5d3334e5-b94a-4e0d-a782-47e400a1c51b');
-  // const response = await fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja');
+  const response = await fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja');
   const body = await response.json();
   const card = Card.safeParse(body);
   if (!card.success) {
