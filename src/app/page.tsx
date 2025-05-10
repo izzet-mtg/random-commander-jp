@@ -30,7 +30,7 @@ export default function Home() {
   const [activeTabId, setActiveTabId] = useState<string>(defaultTabId);
   const [error, setError] = useState<Error | undefined>(useCardError || useSymbolError);
   const [tabs, setTabs] = useState<Record<string, string>>({});
-  const [cardFaces, setCardFaces] = useState<Record<string, CardFaceData>>({});
+  const [cardFaces, setCardFaces] = useState<Record<string, CardFaceData & { flipImage?: boolean } >>({});
   useEffect(() => {
     if (card && symbols) {
       console.info(`user fetched card (name: ${card.name}, id: ${card.id})`);
@@ -65,6 +65,12 @@ export default function Home() {
           [defaultTabId]: { ...card.card_faces[0], image_uris: card.image_uris },
           adventure: { ...card.card_faces[1], image_uris: card.image_uris },
         });
+      } else if (card.layout === "flip") {
+        setTabs({ [defaultTabId]: "正位置", flip: "逆位置" });
+        setCardFaces({
+          [defaultTabId]: { ...card.card_faces[0], image_uris: card.image_uris },
+          flip: { ...card.card_faces[1], image_uris: card.image_uris, flipImage: true },
+        });
       }
       setActiveTabId(activeTabId ?? Object.keys(tabs)[0]);
       setIsLoading(false);
@@ -91,7 +97,7 @@ export default function Home() {
       {activeTabId &&
         <CardFace>
           <CardImage>
-            <img className="block lg:h-96 h-80 m-auto row-span-1 rounded-xl" src={cardFaces[activeTabId].image_uris!.normal} />
+            <img className={`block lg:h-96 h-80 m-auto row-span-1 rounded-xl ${activeCardFace.flipImage ? "rotate-180" : ""}`} src={cardFaces[activeTabId].image_uris!.normal} />
           </CardImage>
           <div className="max-w-128">
             <Name>

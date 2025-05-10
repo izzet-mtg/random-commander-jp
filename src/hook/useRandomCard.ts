@@ -80,15 +80,20 @@ const MeldCard = CardCommon.extend({
 const SplitCard = CardCommon.extend({
   layout: z.literal("split"),
 });
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const FlipCard = CardCommon.extend({
+  card_faces: z.tuple([CardFace, CardFace]),
+  image_uris: z.object({
+    normal: z.string().url(),
+  }).optional(),
   layout: z.literal("flip"),
 });
-const Card = z.union([NormalCard, DualFaceCard, AdventureCard]);
+export type FlipCard = z.infer<typeof FlipCard>;
+const Card = z.union([NormalCard, DualFaceCard, AdventureCard, FlipCard]);
 export type Card = z.infer<typeof Card>;
 
 const fetcher = async (): Promise<{ success: true, card: Card } | { success: false, error: Error }> => {
-  const response = await fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja');
+  // const response = await fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja');
+  const response = await fetch('https://api.scryfall.com/cards/33a8e5b9-6bfb-4ff2-a16d-3168a5412807?format=json&pretty=true');
   const body = await response.json();
   const card = Card.safeParse(body);
   if (!card.success) {
