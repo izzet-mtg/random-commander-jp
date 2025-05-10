@@ -100,7 +100,7 @@ const fetcher = async (): Promise<{ success: true, card: Card } | { success: fal
  */
 const useRandomCard = () => {
   const { data: response, error, isLoading } =  useSWRImmutable('/cards/random', fetcher);
-  if (typeof response === 'undefined') {
+  if (typeof response === 'undefined' || error) {
     return { card: undefined, error, isLoading: false };
   }
   if (!response.success) {
