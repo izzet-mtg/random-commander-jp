@@ -6,6 +6,8 @@
 
 ## [まだリリースされていないもの]
 
+## [3.1.0] - 2025-05-11
+
 ### 追加
 
 - 合体カードに対応
@@ -104,7 +106,8 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.0.1...HEAD
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.1.0...HEAD
+[3.1.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.0.1...v3.1.0
 [3.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v2.1.0...v3.0.0
 [2.1.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v2.0.1...v2.1.0
