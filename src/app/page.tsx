@@ -66,8 +66,8 @@ export default function Home() {
           adventure: { ...card.card_faces[1], image_uris: card.image_uris },
         });
       }
-      setIsLoading(false);
       setActiveTabId(activeTabId ?? Object.keys(tabs)[0]);
+      setIsLoading(false);
     }
   }, [card, symbols]);
   if (error) {
@@ -146,7 +146,13 @@ export default function Home() {
         </CardFace>
       }
       <div className="flex items-center p-8 gap-4">
-        <button type="button" className="w-30 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => revalidateCard()}>再選択</button>
+        <button
+          type="button"
+          className="w-30 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          onClick={() => { setActiveTabId(defaultTabId); revalidateCard(); }}
+        >
+          再選択
+        </button>
         <button type="button" className="w-30 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={() => window.open(card?.related_uris.edhrec)}>EDHREC </button>
       </div>
       {error && (
