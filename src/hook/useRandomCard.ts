@@ -76,10 +76,6 @@ export type AdventureCard = z.infer<typeof AdventureCard>;
 const MeldCard = CardCommon.extend({
   layout: z.literal("meld"),
 });
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const SplitCard = CardCommon.extend({
-  layout: z.literal("split"),
-});
 const FlipCard = CardCommon.extend({
   card_faces: z.tuple([CardFace, CardFace]),
   image_uris: z.object({
