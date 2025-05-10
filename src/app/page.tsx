@@ -59,6 +59,12 @@ export default function Home() {
           [defaultTabId]: card.card_faces[0],
           reverse: card.card_faces[1],
         });
+      } else if (card.layout === "adventure") {
+        setTabs({ [defaultTabId]: "当事者", adventure: "出来事" });
+        setCardFaces({
+          [defaultTabId]: { ...card.card_faces[0], image_uris: card.image_uris },
+          adventure: { ...card.card_faces[1], image_uris: card.image_uris },
+        });
       }
       setIsLoading(false);
       setActiveTabId(activeTabId ?? Object.keys(tabs)[0]);
