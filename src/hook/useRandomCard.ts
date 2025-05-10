@@ -10,7 +10,7 @@ const fetcher = async (): Promise<{ success: true, card: Card } | { success: fal
   const body = await response.json();
   const card = Card.safeParse(body);
   if (!card.success) {
-    console.log(card.error);
+    console.error(card.error);
     console.error(body);
     return { success: false, error: card.error };
   }
