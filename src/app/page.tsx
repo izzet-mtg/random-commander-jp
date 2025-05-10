@@ -11,6 +11,7 @@ import ErrorDialog from '@/component/ErrorDialog';
 import { parseCardText } from '@/lib/cardtext';
 import CardSet from '@/component/card/Set';
 import ColorIdentity from '@/component/card/ColorIdentity';
+import ManaCost from '@/component/card/ManaCost';
 
 const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
   <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
@@ -68,17 +69,14 @@ export default function Home() {
             {colorSymbols.map((symbol, index) => <img key={`symbol-${index}`} src={symbol} className='h-[1em]' />)}
           </ColorIdentity>
           <hr />
-          <TextSection>
-            <TextSectionTitle>マナコスト</TextSectionTitle>
-            <TextSectionSpacer />
-            {manaCosts && (
+          <ManaCost>
+            {!manaCosts ? <p className="font-bold">!マナコスト未登録です</p> :
               <span className='flex justify-center items-center gap-1'>
                 {manaCosts.map((symbol, index) => <img key={`mana-cost-${index}`} src={symbol} className='h-[1em]' />)}
                 (総量: {card.cmc})
               </span>
-            )}
-            {!manaCosts && <p className="font-bold">!マナコスト未登録です</p>}
-          </TextSection>
+            }
+          </ManaCost>
           <hr />
           <TextSection>
             <TextSectionTitle>カードタイプ</TextSectionTitle>
