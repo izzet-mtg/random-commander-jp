@@ -19,6 +19,7 @@ import Loyalty from '@/component/card/Loyalty';
 import Name from '@/component/card/Name';
 import Section from '@/component/card/internal/Section';
 import CardImage from '@/component/card/Image';
+import CardFace from '@/component/card/Face';
 
 export default function Home() {
   const { card, error: useCardError } = useRandomCard();
@@ -45,7 +46,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center p-8">
-      <div className="grid md:grid-cols-2 grid-cols-1 max-w-[1280px]">
+      <CardFace>
         {card.image_uris && (
           <CardImage>
             <img className="block lg:h-96 h-80 m-auto row-span-1 rounded-xl" src={card.image_uris!.normal} />
@@ -98,7 +99,7 @@ export default function Home() {
             <Loyalty loyalty={card.loyalty} />
           )}
         </div>
-      </div>
+      </CardFace>
       <div className="flex items-center p-8 gap-4">
         <button type="button" className="w-30 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => revalidateCard()}>再選択</button>
         <button type="button" className="w-30 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={() => window.open(card.related_uris.edhrec)}>EDHREC </button>
