@@ -13,6 +13,7 @@ import CardSet from '@/component/card/Set';
 import ColorIdentity from '@/component/card/ColorIdentity';
 import ManaCost from '@/component/card/ManaCost';
 import Rarity from '@/component/card/Rarity';
+import Type from '@/component/card/Type';
 
 const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
   <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
@@ -79,11 +80,7 @@ export default function Home() {
             }
           </ManaCost>
           <hr />
-          <TextSection>
-            <TextSectionTitle>カードタイプ</TextSectionTitle>
-            <TextSectionSpacer />
-            <p>{card.printed_type_line || card.type_line}</p>
-          </TextSection>
+          <Type>{card.printed_type_line || card.type_line}</Type>
           <hr />
           <Rarity rarity={card.rarity} />
           <hr />
