@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: MIT
 
 import { useEffect, useState } from 'react';
-import useRandomCard, { CardFace as CardFaceData, revalidate as revalidateCard } from '@/hook/useRandomCard';
+import useRandomCard, { revalidate as revalidateCard } from '@/hook/useRandomCard';
 import useSymbol from '@/hook/useSymbol';
 import { parseManaCost } from '@/lib/manacost';
 import ErrorDialog from '@/component/ErrorDialog';
@@ -21,6 +21,7 @@ import Section from '@/component/card/internal/Section';
 import CardImage from '@/component/card/Image';
 import CardFace from '@/component/card/Face';
 import Tab from '@/component/Tab';
+import { CardFace as CardFaceData } from '@/type/card';
 
 export default function Home() {
   const defaultTabId = "upright" as const;
