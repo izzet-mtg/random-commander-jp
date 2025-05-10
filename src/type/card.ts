@@ -69,10 +69,26 @@ const AdventureCard = CardCommon.extend({
   layout: z.literal("adventure"),
 });
 export type AdventureCard = z.infer<typeof AdventureCard>;
-// TODO: 以下は後で対応
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const MeldPart = z.object({
+  id: z.string(),
+  component: z.union([z.literal("meld_result"), z.literal("meld_part"), z.literal("combo_piece")]),
+  uri: z.string().url(),
+  name: z.string(),
+});
 const MeldCard = CardCommon.extend({
   layout: z.literal("meld"),
+  all_parts: z.array(MeldPart),
+  image_uris: z.object({
+    normal: z.string().url(),
+  }).optional(),
+  printed_name: z.string().optional(),
+  printed_text: z.string().optional(),
+  printed_type_line: z.string().optional(),
+  oracle_text: z.string().optional(),
+  power: z.string().optional(),
+  type_line: z.string(),
+  toughness: z.string().optional(),
+  loyalty: z.string().optional(),
 });
 const FlipCard = CardCommon.extend({
   card_faces: z.tuple([CardFace, CardFace]),
@@ -82,5 +98,5 @@ const FlipCard = CardCommon.extend({
   layout: z.literal("flip"),
 });
 export type FlipCard = z.infer<typeof FlipCard>;
-export const Card = z.union([NormalCard, DualFaceCard, AdventureCard, FlipCard]);
+export const Card = z.union([NormalCard, DualFaceCard, AdventureCard, FlipCard, MeldCard]);
 export type Card = z.infer<typeof Card>;

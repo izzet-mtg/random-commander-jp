@@ -22,6 +22,7 @@ import CardImage from '@/component/card/Image';
 import CardFace from '@/component/card/Face';
 import Tab from '@/component/Tab';
 import { CardFace as CardFaceData } from '@/type/card';
+import useCardSearch from '@/hook/useCardSearch';
 
 export default function Home() {
   const defaultTabId = "upright" as const;
@@ -29,54 +30,108 @@ export default function Home() {
   const { card, error: useCardError } = useRandomCard();
   const { symbols, error: useSymbolError } = useSymbol();
   const [activeTabId, setActiveTabId] = useState<string>(defaultTabId);
-  const [error, setError] = useState<Error | undefined>(useCardError || useSymbolError);
   const [tabs, setTabs] = useState<Record<string, string>>({});
   const [cardFaces, setCardFaces] = useState<Record<string, CardFaceData & { flipImage?: boolean } >>({});
+  // 合体カードは複雑で、手順は次の通り:
+  // 1. 合体カードのパーツカードがくる
+  // 2. プロパティを見ると合体カードの名前がある
+  // 3. 合体カードの名前で検索 API を実行してカード情報取得
+  // 4. カード情報を state 保存
+  // 5. 描画かかって合体カード情報が UI に表示される
+  // そのため、合体カード名を保存するステートを用意して基本 `undefined` にしておいて検索 API 呼び出す `useSWR` フックは
+  // 検索せずに素通りさせ、合体カードのときだけカード名を state に保存して検索 API をよびだして `meldCard` に
+  // 合体カード情報がのるようにするという手法で実現
+  // 注意点として日本語、というか検索 API が遅い
+  const [meldCardName, setMeldCardName] = useState<string | undefined>();
+  const { card: meldCard, error: useCardSearchError } = useCardSearch(meldCardName);
+  const [error, setError] = useState<Error | undefined>(useCardError || useSymbolError || useCardSearchError);
   useEffect(() => {
     if (card && symbols) {
       console.info(`user fetched card (name: ${card.name}, id: ${card.id})`);
-  
-      if (card.layout === "normal") {
-        setTabs({ [defaultTabId]: "表" });
-        setCardFaces({
-          [defaultTabId]: {
-            colors: card.color_identity,
-            image_uris: card.image_uris,
-            name: card.name,
-            oracle_text: card.oracle_text,
-            power: card.power,
-            toughness: card.toughness,
-            loyalty: card.loyalty,
-            printed_text: card.printed_text,
-            printed_type_line: card.printed_type_line,
-            type_line: card.type_line,
-            printed_name: card.printed_name,
-            mana_cost: card.mana_cost,
-          }
-        });
-      } else if (card.layout === "transform" || card.layout === "modal_dfc") {
-        setTabs({ [defaultTabId]: "表", reverse: "裏" });
-        setCardFaces({
-          [defaultTabId]: card.card_faces[0],
-          reverse: card.card_faces[1],
-        });
-      } else if (card.layout === "adventure") {
-        setTabs({ [defaultTabId]: "当事者", adventure: "出来事" });
-        setCardFaces({
-          [defaultTabId]: { ...card.card_faces[0], image_uris: card.image_uris },
-          adventure: { ...card.card_faces[1], image_uris: card.image_uris },
-        });
-      } else if (card.layout === "flip") {
-        setTabs({ [defaultTabId]: "正位置", flip: "逆位置" });
-        setCardFaces({
-          [defaultTabId]: { ...card.card_faces[0], image_uris: card.image_uris },
-          flip: { ...card.card_faces[1], image_uris: card.image_uris, flipImage: true },
-        });
+
+      switch (card.layout) {
+        case "transform":
+        case "modal_dfc":
+          setTabs({ [defaultTabId]: "表", reverse: "裏" });
+          setCardFaces({
+            [defaultTabId]: card.card_faces[0],
+            reverse: card.card_faces[1],
+          });
+          break;
+        case "adventure":
+          setTabs({ [defaultTabId]: "当事者", adventure: "出来事" });
+          setCardFaces({
+            [defaultTabId]: { ...card.card_faces[0], image_uris: card.image_uris },
+            adventure: { ...card.card_faces[1], image_uris: card.image_uris },
+          });
+          break;
+        case "flip":
+          setTabs({ [defaultTabId]: "正位置", flip: "逆位置" });
+          setCardFaces({
+            [defaultTabId]: { ...card.card_faces[0], image_uris: card.image_uris },
+            flip: { ...card.card_faces[1], image_uris: card.image_uris, flipImage: true },
+          });
+          break;
+        case "normal":
+          setTabs({ [defaultTabId]: "表" });
+          setCardFaces({
+            [defaultTabId]: {
+              colors: card.color_identity,
+              image_uris: card.image_uris,
+              name: card.name,
+              oracle_text: card.oracle_text,
+              power: card.power,
+              toughness: card.toughness,
+              loyalty: card.loyalty,
+              printed_text: card.printed_text,
+              printed_type_line: card.printed_type_line,
+              type_line: card.type_line,
+              printed_name: card.printed_name,
+              mana_cost: card.mana_cost,
+            }
+          });
+          break;
+        case "meld":
+          setTabs({ [defaultTabId]: "表", meld: "合体" });
+          setCardFaces({
+            [defaultTabId]: {
+              colors: card.color_identity,
+              image_uris: card.image_uris,
+              name: card.name,
+              oracle_text: card.oracle_text,
+              power: card.power,
+              toughness: card.toughness,
+              loyalty: card.loyalty,
+              printed_text: card.printed_text,
+              printed_type_line: card.printed_type_line,
+              type_line: card.type_line,
+              printed_name: card.printed_name,
+              mana_cost: card.mana_cost,
+            },
+            ...(meldCard === undefined || meldCard.layout !== "meld" ? {} : {
+              meld: {
+                colors: meldCard.color_identity,
+                image_uris: meldCard.image_uris,
+                name: meldCard.name,
+                oracle_text: meldCard.oracle_text,
+                power: meldCard.power,
+                toughness: meldCard.toughness,
+                loyalty: meldCard.loyalty,
+                printed_text: meldCard.printed_text,
+                printed_type_line: meldCard.printed_type_line,
+                type_line: meldCard.type_line,
+                printed_name: meldCard.printed_name,
+                mana_cost: meldCard.mana_cost,
+              },
+            }),
+          });
+          setMeldCardName(card.all_parts.find(part => part.component === "meld_result")?.name);
+          break;
       }
       setActiveTabId(activeTabId ?? Object.keys(tabs)[0]);
       setIsLoading(false);
     }
-  }, [card, symbols]);
+  }, [card, symbols, meldCard]);
   if (error) {
     console.error(`user encountered error: ${error}`);
   }
