@@ -16,6 +16,7 @@ import Rarity from '@/component/card/Rarity';
 import Type from '@/component/card/Type';
 import Stats from '@/component/card/Stats';
 import Loyalty from '@/component/card/Loyalty';
+import Name from '@/component/card/Name';
 
 const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
   <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
@@ -55,9 +56,9 @@ export default function Home() {
           )}
         </div>
         <div className="max-w-128">
-          <TextSection>
-            <h1 className="text-2xl font-extrabold">{card.printed_name || card.name}</h1>
-          </TextSection>
+          <Name>
+            {card.printed_name || card.name}
+          </Name>
           <hr />
           <CardSet>
             {card.set_name ?? <p className="font-bold">!カードセット未登録です</p>}
