@@ -6,8 +6,7 @@ import { mutate } from 'swr';
 import { Card } from '@/type/card';
 
 const fetcher = async (): Promise<{ success: true, card: Card } | { success: false, error: Error }> => {
-  // const response = await fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja');
-  const response = await fetch("https://api.scryfall.com/cards/c75c035a-7da9-4b36-982d-fca8220b1797?format=json&pretty=true");
+  const response = await fetch('https://api.scryfall.com/cards/random?q=is:commander+lang:ja&lang=ja');
   const body = await response.json();
   const card = Card.safeParse(body);
   if (!card.success) {
