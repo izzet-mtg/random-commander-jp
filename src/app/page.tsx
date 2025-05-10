@@ -12,6 +12,7 @@ import { parseCardText } from '@/lib/cardtext';
 import CardSet from '@/component/card/Set';
 import ColorIdentity from '@/component/card/ColorIdentity';
 import ManaCost from '@/component/card/ManaCost';
+import Rarity from '@/component/card/Rarity';
 
 const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
   <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
@@ -84,19 +85,7 @@ export default function Home() {
             <p>{card.printed_type_line || card.type_line}</p>
           </TextSection>
           <hr />
-          <TextSection>
-            <TextSectionTitle>レアリティ</TextSectionTitle>
-            <TextSectionSpacer />
-            {card.rarity === "rare"
-              ? "レア"
-              : card.rarity === "mythic"
-                ? "神話レア"
-                : card.rarity === "uncommon"
-                  ? "アンコモン"
-                  : card.rarity === "special"
-                    ? "スペシャル"
-                    : "コモン"}
-          </TextSection>
+          <Rarity rarity={card.rarity} />
           <hr />
           <TextSection flexCol>
             {cardText.length > 0 && cardText.map(
