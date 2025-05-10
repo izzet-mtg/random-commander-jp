@@ -17,12 +17,7 @@ import Type from '@/component/card/Type';
 import Stats from '@/component/card/Stats';
 import Loyalty from '@/component/card/Loyalty';
 import Name from '@/component/card/Name';
-
-const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
-  <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
-    {children}
-  </div>
-);
+import Section from '@/component/card/internal/Section';
 
 export default function Home() {
   const { card, error: useCardError } = useRandomCard();
@@ -81,7 +76,7 @@ export default function Home() {
           <hr />
           <Rarity rarity={card.rarity} />
           <hr />
-          <TextSection flexCol>
+          <Section flexCol>
             {cardText.length > 0 && cardText.map(
               (line, lineIndex) => (
                 <p key={`text-line: ${lineIndex}`} className="pb-1">
@@ -93,7 +88,7 @@ export default function Home() {
               )
             )}
             {cardText.length === 0 && <p className="font-bold">!カードテキストがありません</p>}
-          </TextSection>
+          </Section>
           <hr />
           {card.power && card.toughness && (
             <Stats power={card.power} toughness={card.toughness} />
