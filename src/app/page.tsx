@@ -14,6 +14,7 @@ import ColorIdentity from '@/component/card/ColorIdentity';
 import ManaCost from '@/component/card/ManaCost';
 import Rarity from '@/component/card/Rarity';
 import Type from '@/component/card/Type';
+import Stats from '@/component/card/Stats';
 
 const TextSection = ({ children, flexCol }: PropsWithChildren<{ flexCol?: boolean }>) => (
   <div className={`text-center md:text-left p-2 flex ${flexCol ? "flex-col" : ""}`}>
@@ -99,11 +100,7 @@ export default function Home() {
           </TextSection>
           <hr />
           {card.power && card.toughness && (
-            <TextSection>
-              <TextSectionTitle>スタッツ</TextSectionTitle>
-              <TextSectionSpacer />
-              {card.power}/{card.toughness}
-            </TextSection>
+            <Stats power={card.power} toughness={card.toughness} />
           )}
           {card.loyalty && (
             <TextSection>
