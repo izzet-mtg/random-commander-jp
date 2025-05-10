@@ -4,25 +4,50 @@
 import useSWRImmutable from 'swr/immutable';
 import { mutate } from 'swr';
 import { z } from 'zod';
+import { Rarity } from '@/type/rarity';
 
-// スキーマは Scryfall の /cards/random GET API を参考
-// https://scryfall.com/docs/api/cards/random
-const Card = z.object({
-  id: z.string(),
-  color_identity: z.array(z.union([z.literal("W"), z.literal("U"), z.literal("B"), z.literal("R"), z.literal("G")])),
+const CardColor = z.union([z.literal("W"), z.literal("U"), z.literal("B"), z.literal("R"), z.literal("G")]);
+export type CardColor = z.infer<typeof CardColor>;
+// スキーマの参考は以下
+// https://api.scryfall.com/cards/946ca338-5f43-4cff-bd93-1b28449c5fdc
+const CardFace = z.object({
+  name: z.string(),
+  printed_text: z.string().optional(),
+  oracle_text: z.string().optional(),
+  type_line: z.string(),
+  printed_type_line: z.string().optional(),
   image_uris: z.object({
     normal: z.string().url(),
   }).optional(),
+  colors: z.array(CardColor),
+  power: z.string().optional(),
+  toughness: z.string().optional(),
+  loyalty: z.string().optional(),
   printed_name: z.string().optional(),
-  rarity: z.union([z.literal("rare"), z.literal("common"), z.literal("uncommon"), z.literal("mythic"), z.literal("special")]),
-  game_changer: z.boolean(),
-  name: z.string(),
+  mana_cost: z.string().optional(),
+});
+export type CardFace = z.infer<typeof CardFace>;
+// スキーマは Scryfall の /cards/random GET API を参考
+// https://scryfall.com/docs/api/cards/random
+const CardCommon = z.object({
+  id: z.string(),
+  color_identity: z.array(CardColor),
+  rarity: Rarity,
   mana_cost: z.string().optional(),
   related_uris: z.object({
     edhrec: z.string().url(),
   }),
   cmc: z.number(),
   set_uri: z.string(),
+  set_name: z.string().optional(),
+  name: z.string(),
+  game_changer: z.boolean(),
+});
+const NormalCard = CardCommon.extend({
+  image_uris: z.object({
+    normal: z.string().url(),
+  }).optional(),
+  printed_name: z.string().optional(),
   printed_text: z.string().optional(),
   printed_type_line: z.string().optional(),
   oracle_text: z.string().optional(),
@@ -30,8 +55,28 @@ const Card = z.object({
   type_line: z.string(),
   toughness: z.string().optional(),
   loyalty: z.string().optional(),
-  set_name: z.string().optional(),
+  layout: z.literal("normal"),
 });
+export type NormalCard = z.infer<typeof NormalCard>;
+const DualFaceCard = CardCommon.extend({
+  card_faces: z.tuple([CardFace, CardFace]),
+  layout: z.union([z.literal("transform"), z.literal("modal_dfc")]),
+});
+export type DualFaceCard = z.infer<typeof DualFaceCard>;
+// TODO: 以下は後で対応
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const MeldCard = CardCommon.extend({
+  layout: z.literal("meld"),
+});
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const SplitCard = CardCommon.extend({
+  layout: z.literal("split"),
+});
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const FlipCard = CardCommon.extend({
+  layout: z.literal("flip"),
+});
+const Card = z.union([NormalCard, DualFaceCard]);
 export type Card = z.infer<typeof Card>;
 
 const fetcher = async (): Promise<{ success: true, card: Card } | { success: false, error: Error }> => {
@@ -64,7 +109,7 @@ const useRandomCard = () => {
 
   const card = response.card;
   return {
-    card: { ...card, printed_text: card.printed_text?.split("\n"), oracle_text: card.oracle_text?.split("\n") },
+    card,
     error,
     isLoading,
   };
