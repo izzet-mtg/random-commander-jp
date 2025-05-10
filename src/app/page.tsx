@@ -53,7 +53,7 @@ export default function Home() {
             mana_cost: card.mana_cost,
           }
         });
-      } else if (card.layout === "transform") {
+      } else if (card.layout === "transform" || card.layout === "modal_dfc") {
         setTabs({ [defaultTabId]: "表", reverse: "裏" });
         setCardFaces({
           [defaultTabId]: card.card_faces[0],
