@@ -93,7 +93,7 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center p-8">
       <div className='p-8'>
-        <Tab tabs={tabs} onClick={(tabId: string) => setActiveTabId(tabId)} />
+        <Tab tabs={tabs} onClick={(tabId: string) => setActiveTabId(tabId)} activeTabId={activeTabId} />
       </div>
       {activeTabId &&
         <CardFace>

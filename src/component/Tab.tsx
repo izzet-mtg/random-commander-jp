@@ -1,7 +1,7 @@
 // Copyright (c) 2025 izzet-mtg
 // SPDX-License-Identifier: MIT
 
-import { PropsWithChildren, useState } from "react"
+import { PropsWithChildren } from "react"
 
 type TabButtonProps = {
   onClick?: () => void,
@@ -29,11 +29,11 @@ const NonActiveButton = ({ children, onClick }: PropsWithChildren<{ onClick?: ()
 export type TabProps = {
   tabs: Record<string, string>;
   onClick?: (tabId: string) => void;
+  activeTabId: string;
 };
 
-const Tab = ({ tabs: $tabs, onClick }: TabProps) => {
+const Tab = ({ tabs: $tabs, onClick, activeTabId }: TabProps) => {
   const tabs = Object.entries($tabs);
-  const [activeTabId, setActiveTabId] = useState<string>(tabs[0][0]);
 
   return (
     <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-300 dark:text-gray-400 dark:border-gray-700">
@@ -41,7 +41,7 @@ const Tab = ({ tabs: $tabs, onClick }: TabProps) => {
         {tabs.map(([id, name]) => (
           <div key={`tab-item-${id}`}>
             {activeTabId === id && <ActiveButton>{name}</ActiveButton>}
-            {activeTabId !== id && <NonActiveButton onClick={() => { setActiveTabId(id); onClick?.(id); }}>{name}</NonActiveButton>}
+            {activeTabId !== id && <NonActiveButton onClick={() => onClick?.(id)}>{name}</NonActiveButton>}
           </div>
         ))}
       </nav>
