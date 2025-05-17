@@ -7,7 +7,7 @@ const nextConfig = {
     NEXT_PUBLIC_CONTACT_LINK: "https://forms.gle/FNLZMrzAnxNehuaP6",
     NEXT_PUBLIC_BASE_PATH: basePath,
     NEXT_PUBLIC_GITHUB_REPOSITORY_URL: "https://github.com/izzet-mtg/random-commander-jp/",
-    NEXT_PUBLIC_SITE_URL: "https://izzet-mtg.github.io/random-commander-jp/",
+    NEXT_PUBLIC_SITE_URL: "https://izzet-mtg.github.io/random-commander-jp",
   },
   assetPrefix: basePath,
   basePath: basePath,
