@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 import { Metadata } from "next";
-import AboutUsPage from "@/component/page/AboutUs";
+import FaqPage from "@/component/page/Faq";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -21,6 +21,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutUs() {
-  return <AboutUsPage />;
+export default function Faq() {
+  return <FaqPage />;
 }
