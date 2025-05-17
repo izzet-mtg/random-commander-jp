@@ -37,3 +37,6 @@ npm run dev
 ## 各種リンクの変更
 FAQ や連絡先といった変更されるものは `next.config.ts` の `env` にて設定しているため、適宜変更してください。
 また、 `basePath` で設定しているパスに設定している org 名を自身のものに変更してください。
+
+## Google Search Console の verification 用ファイル削除
+`public` フォルダーに Google の Google Search Console の verification 用ファイルがあるため、こちらを削除し、自前のものに置き換えて利用してください。
