@@ -6,6 +6,8 @@
 
 ## [まだリリースされていないもの]
 
+## [3.1.2] - 2025-05-17
+
 ### 変更
 
 - 統率者の再選択時にロード画面を表示するようにした
@@ -116,7 +118,8 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.1.1...HEAD
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.1.2...HEAD
+[3.1.2]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.1.1...v3.1.2
 [3.1.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.1.0...v3.1.1
 [3.1.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.0.1...v3.1.0
 [3.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.0.0...v3.0.1
