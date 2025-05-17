@@ -1,9 +1,8 @@
-'use client';
-
 // Copyright (c) 2025 izzet-mtg
 // SPDX-License-Identifier: MIT
 
 import { useEffect, useState } from 'react';
+import { Metadata } from 'next';
 import useRandomCard, { revalidate as revalidateCard } from '@/hook/useRandomCard';
 import useSymbol from '@/hook/useSymbol';
 import { parseManaCost } from '@/lib/manacost';
@@ -23,6 +22,23 @@ import CardFace from '@/component/card/Face';
 import Tab from '@/component/Tab';
 import { CardFace as CardFaceData } from '@/type/card';
 import useCardSearch from '@/hook/useCardSearch';
+
+export const metadata: Metadata = {
+  title: "ホーム",
+  description: "統率者をランダムに表示します",
+  openGraph: {
+    title: "ホーム",
+    description: "統率者をランダムに表示します",
+    siteName: "ランダム統率者",
+    type: "website",
+    url: process.env.NEXT_PUBLIC_SITE_URL,
+    images: [
+      {
+        url: "/ogp.png",
+      }
+    ],
+  }
+};
 
 export default function Home() {
   const defaultTabId = "upright" as const;

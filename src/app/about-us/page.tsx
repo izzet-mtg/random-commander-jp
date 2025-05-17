@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     siteName: "ランダム統率者",
     type: "website",
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/about-us`,
+    images: [
+      {
+        url: "/ogp.png",
+      }
+    ],
   },
 };
 
