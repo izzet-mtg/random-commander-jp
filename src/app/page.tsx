@@ -31,7 +31,7 @@ export default function Home() {
   const { symbols, error: useSymbolError } = useSymbol();
   const [activeTabId, setActiveTabId] = useState<string>(defaultTabId);
   const [tabs, setTabs] = useState<Record<string, string>>({});
-  const [cardFaces, setCardFaces] = useState<Record<string, CardFaceData & { flipImage?: boolean } >>({});
+  const [cardFaces, setCardFaces] = useState<Record<string, CardFaceData & { flipImage?: boolean }>>({});
   // 合体カードは複雑で、手順は次の通り:
   // 1. 合体カードのパーツカードがくる
   // 2. プロパティを見ると合体カードの名前がある
@@ -159,7 +159,7 @@ export default function Home() {
             <Name>
               {activeCardFace.printed_name ?? activeCardFace.name}
             </Name>
-            <hr/>
+            <hr />
             <CardSet>
               {card?.set_name ?? <p className="font-bold">!カードセット未登録です</p>}
             </CardSet>
@@ -167,7 +167,7 @@ export default function Home() {
             <ColorIdentity>
               {symbols && (
                 (colorIdentity.length > 0 ? colorIdentity : ["{C}"]).map(
-                  (color, index) => <img key={`color-identity-${index}`} src={symbols[color]} className='h-[1em] '/>
+                  (color, index) => <img key={`color-identity-${index}`} src={symbols[color]} className='h-[1em] ' />
                 )
               )}
             </ColorIdentity>
@@ -211,7 +211,7 @@ export default function Home() {
         <button
           type="button"
           className="w-30 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          onClick={() => { setActiveTabId(defaultTabId); revalidateCard(); }}
+          onClick={() => { setActiveTabId(defaultTabId); setIsLoading(true); revalidateCard(); }}
         >
           再選択
         </button>
