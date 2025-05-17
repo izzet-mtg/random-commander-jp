@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     url: process.env.NEXT_PUBLIC_SITE_URL,
     images: [
       {
-        url: "/ogp.png",
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/ogp.png`,
       }
     ],
   }
