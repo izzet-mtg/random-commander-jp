@@ -15,6 +15,18 @@ const notoSansJp = Noto_Sans_JP({
 export const metadata: Metadata = {
   title: "ランダム統率者",
   description: "統率者をランダムに表示します",
+  openGraph: {
+    title: "ランダム統率者",
+    description: "統率者をランダムに表示します",
+    siteName: "ランダム統率者",
+    type: "website",
+    url: process.env.NEXT_PUBLIC_SITE_URL,
+    images: [
+      {
+        url: "/ogp.png",
+      }
+    ],
+  }
 };
 
 export default function RootLayout({

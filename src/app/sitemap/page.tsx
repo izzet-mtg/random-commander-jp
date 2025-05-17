@@ -1,9 +1,25 @@
-'use client';
-
 // Copyright (c) 2025 izzet-mtg
 // SPDX-License-Identifier: MIT
 
 import { PropsWithChildren } from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "サイトマップ",
+  description: "本サイトのサイトマップです",
+  openGraph: {
+    title: "サイトマップ",
+    description: "本サイトのサイトマップです",
+    siteName: "ランダム統率者",
+    type: "website",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/sitemap`,
+    images: [
+      {
+        url: "/ogp.png",
+      }
+    ],
+  },
+};
 
 const Card = ({ children, href }: PropsWithChildren<{ href?: string }>) => (
   <a href={href}>
