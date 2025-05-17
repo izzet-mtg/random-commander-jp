@@ -59,8 +59,6 @@ export default function AboutUs() {
           <a href={process.env.NEXT_PUBLIC_CONTACT_LINK}>問い合わせフォーム</a>に記載して送信いただければ大丈夫です。
           開発者の方は <a href={process.env.NEXT_PUBLIC_GITHUB_REPOSITORY_URL}>GitHub リポジトリー</a>から Issue をたてていただければ対応しますし、 Pull Request を送信いただいても構いません。
           その際は行動規範をよく読んだ上で実施してください。
-          また、著作の権利を簡素にするため著作権譲渡をお願いしています。
-          投稿される際はそちらに同意いただいてから実施してください。
         </Answer>
       </Section>
     </main>
