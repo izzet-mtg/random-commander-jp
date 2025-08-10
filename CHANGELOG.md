@@ -8,6 +8,8 @@
 
 ### 修正
 
+## [5.0.1] - 2025-08-10
+
 - メタデータの調整
 
 ## [5.0.0] - 2025-08-10
@@ -147,7 +149,8 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.0.0...HEAD
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.0.1...HEAD
+[5.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v4.0.1...v5.0.1
 [5.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v4.0.1...v5.0.0
 [4.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v4.0.0...v4.0.1
 [4.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.1.2...v4.0.0
