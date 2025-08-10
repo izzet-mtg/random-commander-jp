@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: process.env.NEXT_PUBLIC_SITE_URL,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
       lastModified: '2025-08-10',
       changeFrequency: 'daily',
       priority: 1,
