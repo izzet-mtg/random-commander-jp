@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     default: "ランダム統率者 (JP)",
     template: "%s | ランダム統率者 (JP)"
   },
-  description: "統率者をランダムに表示します",
+  description: "Magic: the Gathering の統率者戦における統率者(Commander)をランダムに表示します",
   openGraph: {
     title: {
       default: "ランダム統率者 (JP)",
       template: "%s | ランダム統率者 (JP)"
     },
-    description: "統率者をランダムに表示します",
-    siteName: "ランダム統率者",
+    description: "Magic: the Gathering の統率者戦における統率者(Commander)をランダムに表示します",
+    siteName: "ランダム統率者 (JP)",
     type: "website",
     url: process.env.NEXT_PUBLIC_SITE_URL,
     images: [
