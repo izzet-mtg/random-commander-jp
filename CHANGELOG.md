@@ -6,6 +6,10 @@
 
 ## [まだリリースされていないもの]
 
+### 修正
+
+- sitemap.xml と robots.txt の生成ができなかったので `export const dynamic = "force-static"` を追加
+
 ## [5.1.0] - 2025-08-10
 
 ### 追加
