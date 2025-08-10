@@ -10,14 +10,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FAQ",
     description: "よくある質問とその回答集です",
-    siteName: "ランダム統率者",
-    type: "website",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/faq`,
-    images: [
-      {
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/ogp.png`,
-      }
-    ],
   },
 };
 

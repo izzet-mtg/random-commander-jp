@@ -13,10 +13,16 @@ const notoSansJp = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "ランダム統率者",
+  title: {
+    default: "ランダム統率者 (JP)",
+    template: "%s | ランダム統率者 (JP)"
+  },
   description: "統率者をランダムに表示します",
   openGraph: {
-    title: "ランダム統率者",
+    title: {
+      default: "ランダム統率者 (JP)",
+      template: "%s | ランダム統率者 (JP)"
+    },
     description: "統率者をランダムに表示します",
     siteName: "ランダム統率者",
     type: "website",
