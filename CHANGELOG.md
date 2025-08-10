@@ -8,7 +8,7 @@
 
 ### 削除
 
-- sitemap.xml は GitHub Actions で生成するため削除
+- 自動生成した sitemap.xml が認識されないので Next.js で自分で生成するようにした
 
 ## [5.1.1] - 2025-08-10
 
