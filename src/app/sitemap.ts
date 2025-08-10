@@ -16,7 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${process.env.NEXT_PUBLIC_SITE_URL}/faq`,
-      url: 'https://acme.com/faq',
       lastModified: '2025-08-10',
       changeFrequency: 'daily',
       priority: 0.5,
