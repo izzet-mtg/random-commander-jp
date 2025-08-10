@@ -6,6 +6,8 @@
 
 ## [まだリリースされていないもの]
 
+## [5.0.0] - 2025-08-10
+
 ### 修正
 
 - ページのタイトルを '%s | サイト名' のようなテンプレートにした
@@ -141,7 +143,8 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v4.0.1...HEAD
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.0.0...HEAD
+[5.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v4.0.1...v5.0.0
 [4.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v4.0.0...v4.0.1
 [4.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.1.2...v4.0.0
 [3.1.2]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.1.1...v3.1.2
