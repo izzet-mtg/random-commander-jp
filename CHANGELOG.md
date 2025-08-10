@@ -6,6 +6,8 @@
 
 ## [まだリリースされていないもの]
 
+## [5.1.1] - 2025-08-10
+
 ### 修正
 
 - sitemap.xml と robots.txt の生成ができなかったので `export const dynamic = "force-static"` を追加
@@ -160,7 +162,8 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.1.0...HEAD
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.1.1...HEAD
+[5.1.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.1.0...v5.1.1
 [5.1.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.0.1...v5.1.0
 [5.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v4.0.1...v5.0.0
