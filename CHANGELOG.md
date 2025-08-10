@@ -6,6 +6,8 @@
 
 ## [まだリリースされていないもの]
 
+## [5.1.0] - 2025-08-10
+
 ### 追加
 
 - クローラー向けサイトマップを追加
@@ -154,8 +156,9 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.0.1...HEAD
-[5.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v4.0.1...v5.0.1
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.1.0...HEAD
+[5.1.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.0.1...v5.1.0
+[5.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v4.0.1...v5.0.0
 [4.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v4.0.0...v4.0.1
 [4.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v3.1.2...v4.0.0
