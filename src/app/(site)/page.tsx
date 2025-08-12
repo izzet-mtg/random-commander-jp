@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 import { Metadata } from 'next';
-import HomePage from '@/component/page/Home';
+import CardLottery from '@/component/CardLottery';
 
 export const metadata: Metadata = {
   title: "ホーム",
@@ -12,5 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <HomePage />
+  return (
+    <CardLottery />
+  );
 }

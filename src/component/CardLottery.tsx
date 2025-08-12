@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import useRandomCard, { revalidate as revalidateCard } from '@/hook/useRandomCard';
 import useSymbol from '@/hook/useSymbol';
 import { parseManaCost } from '@/lib/manacost';
-import ErrorDialog from '@/component/ErrorDialog';
 import { parseCardText } from '@/lib/cardtext';
 import CardSet from '@/component/card/Set';
 import ColorIdentity from '@/component/card/ColorIdentity';
@@ -23,8 +22,9 @@ import CardFace from '@/component/card/Face';
 import Tab from '@/component/Tab';
 import { CardFace as CardFaceData } from '@/type/card';
 import useCardSearch from '@/hook/useCardSearch';
+import ErrorDialog from '@/component/ErrorDialog';
 
-export default function Home() {
+const CardLottery = () => {
   const defaultTabId = "upright" as const;
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { card, error: useCardError } = useRandomCard();
@@ -137,16 +137,16 @@ export default function Home() {
   }
 
   if (isLoading) return (
-    <main className="flex items-center justify-center">
+    <div className="flex items-center justify-center">
       <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-    </main>
+    </div>
   );
 
   const activeCardFace = cardFaces[activeTabId];
   const colorIdentity = (card?.color_identity ?? []).map(color => `{${color}}`);
   const cardText = (activeCardFace.printed_text || activeCardFace.oracle_text || "").split("\n").map(line => parseCardText(line));
   return (
-    <main className="flex flex-col items-center justify-center p-8">
+    <div className="flex flex-col items-center justify-center p-8">
       <div className='p-8'>
         <Tab tabs={tabs} onClick={(tabId: string) => setActiveTabId(tabId)} activeTabId={activeTabId} />
       </div>
@@ -230,6 +230,8 @@ export default function Home() {
           </div>
         </ErrorDialog>
       )}
-    </main>
+    </div>
   );
 }
+
+export default CardLottery;
