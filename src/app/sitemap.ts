@@ -23,19 +23,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: `${process.env.NEXT_PUBLIC_SITE_URL}/faq`,
-      lastModified: '2025-08-10',
-      changeFrequency: 'daily',
-      priority: 0.5,
-    },
-    {
       url: `${process.env.NEXT_PUBLIC_SITE_URL}/privacy-policy`,
       lastModified: '2025-08-10',
       changeFrequency: 'daily',
       priority: 0.5,
     },
     {
-      url: `${process.env.NEXT_PUBLIC_SITE_URL}/sitemap`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/human-sitemap`,
       lastModified: '2025-08-10',
       changeFrequency: 'daily',
       priority: 0.5,
