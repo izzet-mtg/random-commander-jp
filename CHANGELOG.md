@@ -181,7 +181,7 @@
 [まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.1...HEAD
 [6.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.1.1...v6.0.0
-[5.1.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.1.0...v5.1.1
+[5.1.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.1.0...v5.1.1
 [5.1.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.0.1...v5.1.0
 [5.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v4.0.1...v5.0.0
