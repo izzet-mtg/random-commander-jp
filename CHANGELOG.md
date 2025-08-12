@@ -6,6 +6,12 @@
 
 ## [まだリリースされていないもの]
 
+## [6.0.2] - 2025-08-12
+
+### 修正
+
+- sitemap のパスが重複していたり存在しないものを提供していたので中身を調整
+
 ## [6.0.1] - 2025-08-12
 
 ### 修正
@@ -178,7 +184,8 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.1...HEAD
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.2...HEAD
+[6.0.2]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.1.1...v6.0.0
 [5.1.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.1.0...v5.1.1
