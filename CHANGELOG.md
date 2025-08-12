@@ -8,6 +8,8 @@
 
 ### 修正
 
+## [6.0.4] - 2025-08-12
+
 - Footer のサイトマップへのリンクがまちがっていたので修正
 
 ## [6.0.3] - 2025-08-12
@@ -194,7 +196,8 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.3...HEAD
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.4...HEAD
+[6.0.4]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.3...v6.0.4
 [6.0.3]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.0...v6.0.1
