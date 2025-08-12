@@ -10,14 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "サイトマップ",
     description: "本サイトのサイトマップです",
-    siteName: "ランダム統率者",
-    type: "website",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/sitemap`,
-    images: [
-      {
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/ogp.png`,
-      }
-    ],
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/human-sitemap`,
   },
 };
 

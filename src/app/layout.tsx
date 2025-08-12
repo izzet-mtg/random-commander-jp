@@ -26,7 +26,6 @@ export const metadata: Metadata = {
     description: "Magic: the Gathering の統率者戦における統率者(Commander)をランダムに表示します",
     siteName: "ランダム統率者 (JP)",
     type: "website",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
     images: [
       {
         url: `${process.env.NEXT_PUBLIC_SITE_URL}/ogp.png`,
