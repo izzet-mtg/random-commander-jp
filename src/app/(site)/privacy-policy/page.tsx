@@ -9,14 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "プライバシーポリシー",
     description: "本サイトのプライバシーポリシーを記載しています",
-    siteName: "ランダム統率者",
-    type: "website",
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/privacy-policy`,
-    images: [
-      {
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/ogp.png`,
-      }
-    ],
   },
 };
 

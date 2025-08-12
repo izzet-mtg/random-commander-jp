@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FAQ",
     description: "よくある質問とその回答集です",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/faq`,
   },
 };
 

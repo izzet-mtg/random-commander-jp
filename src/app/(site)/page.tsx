@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   title: "ホーム",
   openGraph: {
     title: "ホーム",
+    description: "本サイトのプライバシーポリシーを記載しています",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/`,
   },
 };
 
