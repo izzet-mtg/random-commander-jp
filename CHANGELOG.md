@@ -6,6 +6,8 @@
 
 ## [まだリリースされていないもの]
 
+## [6.0.3] - 2025-08-12
+
 ### 修正
 
 - sitemap の日付は常に `new Date()` するようにした
@@ -188,7 +190,8 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.2...HEAD
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.3...HEAD
+[6.0.3]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/izzet-mtg/random-commander-jp/compare/v5.1.1...v6.0.0
