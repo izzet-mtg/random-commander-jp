@@ -1,3 +1,6 @@
+// Copyright (c) 2025 izzet-mtg
+// SPDX-License-Identifier: MIT
+
 import { MetadataRoute } from 'next';
 
 export const dynamic = "force-static";

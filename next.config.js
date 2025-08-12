@@ -1,3 +1,6 @@
+// Copyright (c) 2025 izzet-mtg
+// SPDX-License-Identifier: MIT
+
 const basePath = process.env.NODE_ENV === "production" ? "/random-commander-jp" : "";
 
 /** @type {import('next').NextConfig} */
