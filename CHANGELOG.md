@@ -6,6 +6,8 @@
 
 ## [まだリリースされていないもの]
 
+## [6.0.6] - 2025-08-13
+
 ### 修正
 
 - パスの調整
@@ -206,8 +208,8 @@
 
 ファーストリリース
 
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.4...HEAD
-[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.5...HEAD
+[まだリリースされていないもの]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.6...HEAD
+[6.0.6]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.5...v6.0.6
 [6.0.5]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.4...v6.0.5
 [6.0.4]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.3...v6.0.4
 [6.0.3]: https://github.com/izzet-mtg/random-commander-jp/compare/v6.0.2...v6.0.3
