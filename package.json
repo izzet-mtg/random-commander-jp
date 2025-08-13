@@ -1,6 +1,6 @@
 {
   "name": "random-commander-jp",
-  "version": "6.0.6",
+  "version": "6.0.7",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
