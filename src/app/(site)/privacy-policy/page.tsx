@@ -11,6 +11,13 @@ export const metadata: Metadata = {
     title: "プライバシーポリシー",
     description: "本サイトのプライバシーポリシーを記載しています",
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/privacy-policy`,
+    images: {
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/ogp.png`,
+      type: "image/png",
+      alt: "ロゴ",
+      width: 1200,
+      height: 630,
+    },
   },
 };
 

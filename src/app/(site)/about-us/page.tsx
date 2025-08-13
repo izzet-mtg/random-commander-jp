@@ -11,6 +11,13 @@ export const metadata: Metadata = {
     title: "私達について",
     description: "本サイトを運用している私たちについて解説しています",
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/about-us`,
+    images: {
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/ogp.png`,
+      type: "image/png",
+      alt: "ロゴ",
+      width: 1200,
+      height: 630,
+    },
   },
 };
 

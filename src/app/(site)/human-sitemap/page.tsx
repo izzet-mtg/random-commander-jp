@@ -12,6 +12,13 @@ export const metadata: Metadata = {
     title: "サイトマップ",
     description: "本サイトのサイトマップです",
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/human-sitemap`,
+    images: {
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/ogp.png`,
+      type: "image/png",
+      alt: "ロゴ",
+      width: 1200,
+      height: 630,
+    },
   },
 };
 

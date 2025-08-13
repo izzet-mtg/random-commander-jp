@@ -12,6 +12,13 @@ export const metadata: Metadata = {
     title: "FAQ",
     description: "よくある質問とその回答集です",
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/faq`,
+    images: {
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/ogp.png`,
+      type: "image/png",
+      alt: "ロゴ",
+      width: 1200,
+      height: 630,
+    },
   },
 };
 

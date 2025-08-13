@@ -15,7 +15,6 @@ const nextConfig = {
     NEXT_PUBLIC_GITHUB_REPOSITORY_URL: "https://github.com/izzet-mtg/random-commander-jp/",
     // OGP 用
     NEXT_PUBLIC_SITE_URL: "https://izzet-mtg.github.io/random-commander-jp",
-
   },
   assetPrefix: basePath,
   basePath: basePath,
