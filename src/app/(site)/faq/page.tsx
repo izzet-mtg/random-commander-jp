@@ -3,6 +3,7 @@
 
 import { PropsWithChildren } from "react";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -43,15 +44,15 @@ export default function Faq() {
       <Section>
         <Question>これは何？</Question>
         <Answer>
-          ランダムに <a href="https://mtg-jp.com/">Magic: the Gathering</a> の<a href="https://mtg-jp.com/gameplay/format/commander.html">統率者戦</a>における統率者を表示するものです。
+          ランダムに <Link href="https://mtg-jp.com/">Magic: the Gathering</Link> の<Link href="https://mtg-jp.com/gameplay/format/commander.html">統率者戦</Link>における統率者を表示するものです。
           利用想定としては友人や様々な人と本ページで表示されるランダムな統率者をつかって統率者戦を遊んでもらうことになります。
-          利用は当地の法律や条例、その他定められ法令と Wizards of the Coast 社が用意している<a href="https://company.wizards.com/ja/legal/fancontentpolicy">ファンコテンツポリシー</a>にしたがってご利用ください。
+          利用は当地の法律や条例、その他定められ法令と Wizards of the Coast 社が用意している<Link href="https://company.wizards.com/ja/legal/fancontentpolicy">ファンコテンツポリシー</Link>にしたがってご利用ください。
         </Answer>
       </Section>
       <Section>
         <Question>一部英語が含まれるのは何故ですか？</Question>
         <Answer>
-          データとして <a href="https://scryfall.com/">Scryfall</a> の <a href="https://scryfall.com/docs/api">API</a> を利用しています。
+          データとして <Link href="https://scryfall.com/">Scryfall</Link> の <Link href="https://scryfall.com/docs/api">API</Link> を利用しています。
           その API から返ってくるデータに英語が含まれており、そのデータを直接利用しているためです。
           日本語に独自対応する予定はありません。
         </Answer>
@@ -59,14 +60,14 @@ export default function Faq() {
       <Section>
         <Question>こちらのデータを利用してよいですか？</Question>
         <Answer>
-          本サイトは <a href="https://scryfall.com/">Scryfall</a> の <a href="https://scryfall.com/docs/api">API</a> を利用しているだけですのでおそらくそちらを利用する方がよいでしょう。
+          本サイトは <Link href="https://scryfall.com/">Scryfall</Link> の <Link href="https://scryfall.com/docs/api">API</Link> を利用しているだけですのでおそらくそちらを利用する方がよいでしょう。
         </Answer>
       </Section>
       <Section>
         <Question>バグやエラーを見つけました。どちらに問い合わせればよいですか？</Question>
         <Answer>
-          <a href={process.env.NEXT_PUBLIC_CONTACT_LINK}>問い合わせフォーム</a>に記載して送信いただければ大丈夫です。
-          開発者の方は <a href={process.env.NEXT_PUBLIC_GITHUB_REPOSITORY_URL}>GitHub リポジトリー</a>から Issue をたてていただければ対応しますし、 Pull Request を送信いただいても構いません。
+          <Link href={process.env.NEXT_PUBLIC_CONTACT_LINK!}>問い合わせフォーム</Link>に記載して送信いただければ大丈夫です。
+          開発者の方は <Link href={process.env.NEXT_PUBLIC_GITHUB_REPOSITORY_URL!}>GitHub リポジトリー</Link>から Issue をたてていただければ対応しますし、 Pull Request を送信いただいても構いません。
           その際は行動規範をよく読んだ上で実施してください。
         </Answer>
       </Section>
