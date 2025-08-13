@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/izzet-mtg/random-commander-jp/refs/heads/main/public/logo.svg" width="15%" />
+  <img src="https://raw.githubusercontent.com/izzet-mtg/random-commander-jp/refs/heads/main/src/asset/logo.svg" width="15%" />
 </p>
 
 # Random Commander JP (RCJ)
