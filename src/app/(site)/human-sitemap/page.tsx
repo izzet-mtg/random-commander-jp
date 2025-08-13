@@ -3,6 +3,7 @@
 
 import { PropsWithChildren } from "react";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "サイトマップ",
@@ -14,12 +15,12 @@ export const metadata: Metadata = {
   },
 };
 
-const Card = ({ children, href }: PropsWithChildren<{ href?: string }>) => (
-  <a href={href}>
+const Card = ({ children, href }: PropsWithChildren<{ href: string }>) => (
+  <Link href={href}>
     <div className="rounded-2xl shadow p-4 dark:hover:bg-gray-600 dark:bg-gray-700 hover:bg-gray-200 bg-gray-300 transition">
       {children}
     </div>
-  </a>
+  </Link>
 );
 
 const CardTitle = ({ children }: PropsWithChildren) => (
@@ -34,7 +35,7 @@ export default function Sitemap() {
   return (
     <main className="max-w-3xl">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center items-center">
-        <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/about-us`}>
+        <Card href="/about-us">
           <CardTitle>
             私たちについて
           </CardTitle>
@@ -42,7 +43,7 @@ export default function Sitemap() {
             目的の紹介
           </CardContents>
         </Card>
-        <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/faq`}>
+        <Card href="/faq">
           <CardTitle>
             よくある質問と回答集
           </CardTitle>
@@ -50,7 +51,7 @@ export default function Sitemap() {
             質問と回答を掲載
           </CardContents>
         </Card>
-        <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/`}>
+        <Card href="/">
           <CardTitle>
             ホーム
           </CardTitle>
@@ -58,7 +59,7 @@ export default function Sitemap() {
             ランダムに統率者を表示
           </CardContents>
         </Card>
-        <Card href={`${process.env.NEXT_PUBLIC_BASE_PATH}/privacy-policy`}>
+        <Card href="/privacy-policy">
           <CardTitle>
             プライバシーポリシー
           </CardTitle>

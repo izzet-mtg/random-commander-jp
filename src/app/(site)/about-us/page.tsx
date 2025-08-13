@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "私達について",
@@ -19,7 +20,7 @@ export default function AboutUs() {
       <div>
         <h1 className="text-2xl font-extrabold pb-4">私達について</h1>
         <p>
-          本サイトは友人と<a href="https://mtg-jp.com/gameplay/format/commander.html">統率者戦</a>でランダムに統率者をピックして遊ぶために作られました。
+          本サイトは友人と<Link href="https://mtg-jp.com/gameplay/format/commander.html">統率者戦</Link>でランダムに統率者をピックして遊ぶために作られました。
           統率者を選ぶのではなく、機械にランダムにピックしてもらうことで新しい発見や見たことのないシナジーといった体験を提供することを目的としています。
         </p>
         <p>

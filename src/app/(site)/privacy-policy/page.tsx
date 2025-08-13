@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
@@ -22,14 +23,14 @@ export default function PrivacyPolicy() {
           本ページでは本サイトの個人情報の取り扱いに関して記載しています。
         </p>
         <p>
-          本サイトは<a href="https://mtg-jp.com/gameplay/format/commander.html">統率者戦</a>において使用する統率者をランダムに表示するだけのサイトです。
+          本サイトは<Link href="https://mtg-jp.com/gameplay/format/commander.html">統率者戦</Link>において使用する統率者をランダムに表示するだけのサイトです。
           そのため、こちらから基本的には何らかの個人情報を収集・保存することはありません。
           また、 Cookie の提供や収集、保存も基本的には実施してないはずです。
         </p>
         <p>
-          ただし、サイトとしては <a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Pages</a> というサービスを利用して運営しており、またカード画像やカード情報といったものは <a href="https://scryfall.com/">Scryfall</a> の <a href="https://scryfall.com/docs/api">API</a> を利用しています。
+          ただし、サイトとしては <Link href="https://docs.github.com/ja/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Pages</Link> というサービスを利用して運営しており、またカード画像やカード情報といったものは <Link href="https://scryfall.com/">Scryfall</Link> の <Link href="https://scryfall.com/docs/api">API</Link> を利用しています。
           そのため、 GitHub Pages を提供する GitHub や Scryfall 側がデータの収集・保存をおこなっている可能性があります。
-          確認した範囲では解析のためにブラウザーのバージョンや OS, スクリーンサイズや言語等を収集しているようですが、詳細が気になる方は <a href="https://docs.github.com/ja/site-policy/privacy-policies/github-general-privacy-statement">GitHub のプライバシーステートメント</a>や <a href="https://scryfall.com/docs/privacy">Scryfall のプライバシーステートメント</a>をご覧ください。
+          確認した範囲では解析のためにブラウザーのバージョンや OS, スクリーンサイズや言語等を収集しているようですが、詳細が気になる方は <Link href="https://docs.github.com/ja/site-policy/privacy-policies/github-general-privacy-statement">GitHub のプライバシーステートメント</Link>や <Link href="https://scryfall.com/docs/privacy">Scryfall のプライバシーステートメント</Link>をご覧ください。
         </p>
       </div>
     </main>
